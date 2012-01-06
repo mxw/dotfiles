@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/maxwang/.vim/bundle/vim-latex/ftplugin'
-let g:netrw_dirhist_2='/home/maxwang/tmp'
-let g:netrw_dirhist_3='/home/maxwang/Documents/electives/chi-bx'
-let g:netrw_dirhist_4='/etc/texmf/texmf.d'
-let g:netrw_dirhist_5='/home/maxwang/Documents/code/tex/pset'
