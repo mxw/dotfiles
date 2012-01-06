@@ -1,0 +1,10 @@
+alias vim='vim -O'
+alias vi='vim'
+alias emacs='emacs -nw'
+alias rm='rm -i'
+alias opn='xdg-open 2> /dev/null'
+alias sshnice='ssh maxwang@nice.fas.harvard.edu'
+alias sshhub='ssh hub@hcs.harvard.edu'
+
+alias hcs='cd ~/Documents/hcs'
+alias cs152='cd ~/Documents/cs/cs152/2010sp'

@@ -1,0 +1,72 @@
+[user]
+  name = maxwang
+  email = mxawng@gmail.com
+
+[alias]
+  a = add
+  aa = add -A
+  br = branch
+  cm = commit
+  ci = commit -a
+  ca = commit --amend
+  caa = commit -a --amend
+  cached = diff --cached
+  cp = cherry-pick
+  co = checkout
+  d = diff
+  dw = diff --ignore-space-change
+  drop = stash drop
+  l = log
+  list = stash list
+  mkbr = "!f() { git checkout -b $1; }; f"
+  mvbr = branch -m
+  peek = show stash@{0}
+  pop = stash pop
+  s = status
+  sh = show
+  st = stash
+  rmbr = branch -D
+  up = pull --rebase
+  w = whatchanged
+
+[color]
+  diff = auto
+  branch = auto
+  status = auto
+  interactive = auto
+  ui = auto
+  pager = true
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = blue
+  frag = cyan
+  old = red
+  new = green
+  whitespace = red blink
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = red
+
+[core]
+  editor = /usr/bin/vim
+  excludesfile = ~/.gitignore
+
+[apply]
+  whitespace = fix
+[branch]
+  autosetupmerge = true
+[log]
+  date = local
+[merge]
+  stat = true
+[push]
+  default = tracking
+[rerere]
+  enabled = true
