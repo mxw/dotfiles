@@ -246,7 +246,7 @@ call s:Tex_EnvMacros('',    '&Structure.', 'verbatim*')
 call s:Tex_EnvMacros('EVE', '&Structure.', 'verse')
 call s:Tex_EnvMacros('ETB', '&Structure.', 'thebibliography')
 call s:Tex_SpecialMacros('', '&Structure.', '-sepstruct0-', ':', 0)
-call s:Tex_EnvMacros('ENO', '&Structure.', 'note')
+"call s:Tex_EnvMacros('ENO', '&Structure.', 'note')
 call s:Tex_EnvMacros('EOV', '&Structure.', 'overlay')
 call s:Tex_EnvMacros('ESL', '&Structure.', 'slide')
 " }}}

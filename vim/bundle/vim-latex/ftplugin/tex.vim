@@ -5,7 +5,10 @@ set sw=2
 let g:Tex_DefaultTargetFormat='pdf'
 
 " pdf viewer
-let g:Tex_ViewRule_pdf='evince'
+let g:Tex_ViewRule_pdf='open'
+
+" ignore Makefiles
+let g:Tex_UseMakefile=0
 
 " disable placeholders
 let g:Imap_UsePlaceHolders=0
