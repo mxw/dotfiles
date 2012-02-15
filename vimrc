@@ -22,7 +22,7 @@ set backupdir=~/tmp//,/tmp//,.
 
 " pathogen
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 " highlighting
 syntax on
