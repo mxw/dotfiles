@@ -79,6 +79,7 @@ map <ESC>[1;5C <C-Right>
 map <ESC>[1;5D <C-Left>
 map! <ESC>[1;5C <C-Right>
 map! <ESC>[1;5D <C-Left>
+map Y y$
 
 " specific filetypes
 autocmd BufNewFile,BufRead *.phpt set ft=php
@@ -89,12 +90,13 @@ autocmd FileType c,cabal,cpp,haskell,javascript,ocaml,php,python,readme,text
   \ autocmd BufWritePre <buffer>
   \ :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
-" addn'l highlighting
+" highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 au ColorScheme * highlight ExtraWhitespace guibg=red
 au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
+" highlight overlong lines
 "highlight OverLength ctermbg=magenta ctermfg=gray guibg=#592929
 "match OverLength /\%81v.\+/
