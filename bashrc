@@ -67,20 +67,12 @@ case "$TERM" in
     ;;
 esac
 
-# Handy ls aliases.
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Enable color support of ls and grep.  Always use GNU ls!
 if [ -x /usr/bin/dircolors -o -x /usr/local/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
   if [ "$OS" = 'darwin' -a -x /usr/local/bin/gls ]; then
     alias ls='gls --color=auto'
-    alias ll='gls -alF --color=auto'
-    alias la='gls -A --color=auto'
-    alias l='gls -CF --color=auto'
   fi
 
   #alias dir='dir --color=auto'
@@ -91,18 +83,12 @@ if [ -x /usr/bin/dircolors -o -x /usr/local/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Source aliases.
+# Source additional aliases.
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-# Enable programmable completion features (you don't need to enable this, if
-# it's already enabled in /etc/bash.bashrc and /etc/profile sources
-# /etc/bash.bashrc).
+# Enable programmable completion features.
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
