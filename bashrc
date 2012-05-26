@@ -66,9 +66,11 @@ case "$TERM" in
 esac
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if [ -x /usr/bin/dircolors -o -x /usr/local/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
+  if [ -x /usr/local/bin/gls ]; then
+    alias ls='gls --color=auto'
+  fi
   #alias dir='dir --color=auto'
   #alias vdir='vdir --color=auto'
 
@@ -78,9 +80,15 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+if [ -x /usr/local/bin/gls ]; then
+  alias ll='gls -alF --color=auto'
+  alias la='gls -A --color=auto'
+  alias l='gls -CF --color=auto'
+else
+  alias ll='ls -alF'
+  alias la='ls -A'
+  alias l='ls -CF'
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
