@@ -29,7 +29,7 @@ syntax enable
 filetype plugin indent on
 
 " color
-se t_Co=16
+set t_Co=16
 set background=dark
 colorscheme solarized
 
@@ -81,8 +81,9 @@ map! <ESC>[1;5C <C-Right>
 map! <ESC>[1;5D <C-Left>
 map Y y$
 
-" specific filetypes
+" filetypes
 autocmd BufNewFile,BufRead *.phpt set ft=php
+autocmd BufNewFile,BufRead *.scss set ft=scss
 let g:tex_flavor='latex'
 
 " kill any trailing whitespace on save
