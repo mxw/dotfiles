@@ -10,3 +10,6 @@
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/css3"]
+	path = vim/bundle/css3
+	url = git://github.com/hail2u/vim-css3-syntax.git
