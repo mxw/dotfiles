@@ -25,7 +25,7 @@ filetype off
 call pathogen#infect()
 
 " highlighting
-syntax on
+syntax enable
 filetype plugin indent on
 
 " color
