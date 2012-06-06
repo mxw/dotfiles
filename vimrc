@@ -241,6 +241,9 @@ endif
 " Miscellaneous
 """"""""""""""""""""""""""""""""""""""""""
 
+" Use skeletal template files.
+au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
+
 " Set LaTeX flavor.
 let g:tex_flavor='latex'
 
