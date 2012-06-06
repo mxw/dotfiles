@@ -7,6 +7,9 @@
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/markdown"]
+	path = vim/bundle/markdown
+	url = git://github.com/plasticboy/vim-markdown.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
