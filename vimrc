@@ -81,15 +81,25 @@ map! <ESC>[1;5C <C-Right>
 map! <ESC>[1;5D <C-Left>
 map Y y$
 
+" bind 'gb' to 'git blame' for visual and normal mode
+:vmap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
+:nmap gb :!git blame %<CR>
+
 " filetypes
 autocmd BufNewFile,BufRead *.phpt set ft=php
 autocmd BufNewFile,BufRead *.scss set ft=scss
 let g:tex_flavor='latex'
 
 " kill any trailing whitespace on save
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
 autocmd FileType c,cabal,cpp,haskell,javascript,ocaml,php,python,readme,text
   \ autocmd BufWritePre <buffer>
-  \ :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+  \ :call <SID>StripTrailingWhitespaces()
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
