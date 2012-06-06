@@ -1,0 +1,11 @@
+ForwardAgent yes
+
+Host nice
+  HostName nice.fas.harvard.edu
+  User maxwang
+Host seas
+  HostName login.seas.harvard.edu
+  User maxwang
+Host hub
+  HostName hcs.harvard.edu
+  User hub
