@@ -238,6 +238,24 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""
+
+" NERDTree - toggle buffer.
+nmap <leader>m  :NERDTreeToggle<CR><C-w>=
+
+" NERDTree - open NERDTree if no files are opened
+au vimenter * if !argc() | NERDTree | endif
+
+" NERDTree - quit vim when all other windows have been closed
+au BufEnter *
+  \ if (winnr("$") == 1 && exists("b:NERDTreeType") &&
+  \ b:NERDTreeType == "primary") |
+  \   q |
+  \ endif
+
+
+""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
 """"""""""""""""""""""""""""""""""""""""""
 
