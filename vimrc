@@ -166,6 +166,9 @@ noremap! <ESC>[1;5D <C-Left>
 " Toggle spellchecking.
 nnoremap <leader>ss :setlocal spell!<CR>
 
+" Remove trailing whitespace.
+nnoremap <leader>ww :%s/\s\+$//<CR>:let @/=''<CR>''
+
 " Bind 'gb' to 'git blame' for visual and normal mode.
 :vnoremap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
 :nnoremap gb :!git blame %<CR>
