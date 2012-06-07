@@ -141,7 +141,7 @@ nnoremap <C-p> :bprev<CR>
 
 " Exit insert mode more easily.
 inoremap jj <Esc>
-inoremap jkj <Esc>
+inoremap kj <Esc>
 
 " Enter command mode more easily.
 nnoremap ; :
