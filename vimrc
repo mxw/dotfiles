@@ -21,7 +21,7 @@ let mapleader=','
 " General
 """"""""""""""""""""""""""""""""""""""""""
 
-" Display settings.
+" Display.
 set ruler             " show cursor coordinates
 set title             " show filename
 set showcmd           " show normal mode commands as they are entered
@@ -44,6 +44,9 @@ set infercase         " case-sensitive completion
 " Scrolling.
 set scrolloff=5       " scroll five lines from the edge
 set scrolljump=5      " scroll five lines at a time
+
+" Folding.
+set nofoldenable      " no folding
 
 " Backspace over everything.
 set backspace=indent,eol,start
