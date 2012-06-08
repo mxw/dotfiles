@@ -157,8 +157,8 @@ nnoremap j gj
 nnoremap k gk
 
 " Jump to matching delimiters more easily.
-nnoremap <Tab> %
-vnoremap <Tab> %
+nnoremap <leader><Tab> %
+vnoremap <leader><Tab> %
 
 " Make <C-Right> and <C-Left> behave as in emacs.
 noremap <ESC>[1;5C <C-Right>
@@ -271,8 +271,9 @@ au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 " Set LaTeX flavor.
 let g:tex_flavor='latex'
 
-" Tag detection for XHP.
-au FileType php setlocal iskeyword+=:,- iskeyword-=<
+" PHP *, #, and :tag support.
+au FileType php setlocal iskeyword+=$
+"au FileType php setlocal iskeyword+=:,- iskeyword-=<
 
 " Kill any trailing whitespace on save.
 fu! <SID>StripTrailingWhitespaces()
