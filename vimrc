@@ -137,6 +137,11 @@ noremap <C-l> <C-w>l
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
 
+" Quickfix and preview windows.
+nnoremap <leader>co :copen<CR>
+nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>p  :pclose<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""
 " Maps
