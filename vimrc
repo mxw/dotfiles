@@ -217,27 +217,20 @@ set tags=tags;/
 
 " Use cscope along with ctags if it's available.
 if has("cscope")
-  " Identify the cscope binary.
-  if filereadable("/usr/bin/cscope")
-    set csprg=/usr/bin/cscope
-  elseif filereadable("/usr/local/bin/cscope")
-    set csprg=/usr/local/bin/cscope
-  endif
-
   " Defer to ctags.
-  set csto=1
+  set cscopetagorder=1
 
   " Use :cstag instead of :tag and friends (<C-]>, etc.).
-  set cst
+  set cscopetag
 
   " Add cscope databases in `pwd` or in $CSCOPE_DB.
-  set nocsverb
+  set nocscopeverbose
   if filereadable("cscope.out")
     cs add cscope.out
   elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
   endif
-  set csverb
+  set cscopeverbose
 else
   " Use :tjump behavior for :tag and friends even without cscope.
   call Cabbrev('tag', 'tjump')
