@@ -157,6 +157,10 @@ nnoremap ; :
 " Make Y behave more like other operators.
 nnoremap Y y$
 
+" Make Q formatting; replace Ex mode with <leader>q.
+noremap  Q gq
+nnoremap <leader>q Q
+
 " Move by screen line rather than file line.
 nnoremap j gj
 nnoremap k gk
@@ -166,8 +170,8 @@ nnoremap <leader><Tab> %
 vnoremap <leader><Tab> %
 
 " Make <C-Right> and <C-Left> behave as in emacs.
-noremap <ESC>[1;5C <C-Right>
-noremap <ESC>[1;5D <C-Left>
+noremap  <ESC>[1;5C <C-Right>
+noremap  <ESC>[1;5D <C-Left>
 noremap! <ESC>[1;5C <C-Right>
 noremap! <ESC>[1;5D <C-Left>
 
@@ -283,6 +287,9 @@ au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 
 " Set LaTeX flavor.
 let g:tex_flavor='latex'
+
+" Set maximum line length.
+au FileType readme,text set tw=79
 
 " PHP *, #, and :tag support.
 "au FileType php setlocal iskeyword+=$
