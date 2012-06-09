@@ -172,6 +172,9 @@ nnoremap <leader>ss :setlocal spell!<CR>
 " Remove trailing whitespace.
 nnoremap <leader>ww :%s/\s\+$//<CR>:let @/=''<CR>''
 
+" Convert filetype to unix.
+nnoremap <leader>ft :e ++ff=dos<CR>:setlocal ff=unix<CR>
+
 " Bind 'gb' to 'git blame' for visual and normal mode.
 :vnoremap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
 :nnoremap gb :!git blame %<CR>
@@ -272,7 +275,7 @@ au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 let g:tex_flavor='latex'
 
 " PHP *, #, and :tag support.
-au FileType php setlocal iskeyword+=$
+"au FileType php setlocal iskeyword+=$
 "au FileType php setlocal iskeyword+=:,- iskeyword-=<
 
 " Kill any trailing whitespace on save.
