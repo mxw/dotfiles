@@ -183,7 +183,7 @@ nnoremap <leader>s  :setlocal spell!<CR>
 nnoremap <silent> <leader>w :%s/\s\+$//<CR>:let @/=''<CR>''
 
 " Convert filetype to unix.
-nnoremap <leader>ft :e ++ff=dos<CR>:setlocal ff=unix<CR>
+nnoremap <leader>ff :e ++ff=dos<CR>:setlocal ff=unix<CR>
 
 " Only cabbrev actual commands (rather than also, say, search terms).
 fu! SingleQuote(str)
