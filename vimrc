@@ -244,18 +244,29 @@ endif
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""
 
-" NERDTree - toggle buffer.
-nmap <leader><Space> :NERDTreeToggle<CR><C-w>=
+" NERDTree - Toggle buffer.
+nnoremap <leader><Space> :NERDTreeToggle<CR><C-w>=
 
-" NERDTree - open NERDTree if no files are opened
+" NERDTree - Open NERDTree if no files are opened.
 au vimenter * if !argc() | NERDTree | endif
 
-" NERDTree - quit vim when all other windows have been closed
+" NERDTree - Quit vim when all other windows have been closed.
 au BufEnter *
   \ if (winnr("$") == 1 && exists("b:NERDTreeType") &&
   \ b:NERDTreeType == "primary") |
   \   q |
   \ endif
+
+" Fugitive - Leader mappings.
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gg :Ggrep<Space>
+nnoremap <leader>gl :Glog<CR><CR><CR>:copen<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gh :Gbrowse<CR>
+nnoremap <leader>gh :Gbrowse<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""
