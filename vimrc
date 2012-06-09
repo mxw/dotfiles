@@ -166,18 +166,19 @@ noremap <ESC>[1;5D <C-Left>
 noremap! <ESC>[1;5C <C-Right>
 noremap! <ESC>[1;5D <C-Left>
 
+" Other useful leader maps.
+nnoremap <leader>m  :make<CR>
+nnoremap <leader>r  <C-l>
+nnoremap <leader>v  <C-w>v
+
 " Toggle spellchecking.
-nnoremap <leader>ss :setlocal spell!<CR>
+nnoremap <leader>s  :setlocal spell!<CR>
 
 " Remove trailing whitespace.
-nnoremap <leader>ww :%s/\s\+$//<CR>:let @/=''<CR>''
+nnoremap <silent> <leader>w :%s/\s\+$//<CR>:let @/=''<CR>''
 
 " Convert filetype to unix.
 nnoremap <leader>ft :e ++ff=dos<CR>:setlocal ff=unix<CR>
-
-" Bind 'gb' to 'git blame' for visual and normal mode.
-:vnoremap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
-:nnoremap gb :!git blame %<CR>
 
 " Only cabbrev actual commands (rather than also, say, search terms).
 fu! SingleQuote(str)
@@ -251,7 +252,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""
 
 " NERDTree - toggle buffer.
-nmap <leader>m  :NERDTreeToggle<CR><C-w>=
+nmap <leader><Space> :NERDTreeToggle<CR><C-w>=
 
 " NERDTree - open NERDTree if no files are opened
 au vimenter * if !argc() | NERDTree | endif
