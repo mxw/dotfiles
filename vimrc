@@ -32,6 +32,7 @@ set showmatch         " flash matching open {paren,bracket,brace}
 set wildmode=longest,list,full
 set wildmenu
 set wildignore+=*.o,*.pyc,*.aux,*.cmi,*.cmo,*.cmx
+set completeopt=menu,preview
 
 " Search.
 set nohlsearch        " don't persist search highlighting
@@ -50,6 +51,9 @@ set nofoldenable      " no folding
 
 " Backspace over everything.
 set backspace=indent,eol,start
+
+" Automatically re-read modified files.
+set autoread
 
 " Turn off error bells.
 set noerrorbells
