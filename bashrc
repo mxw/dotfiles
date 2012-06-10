@@ -88,6 +88,9 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+# Ignore specific filetypes in autocomplete.
+export FIGNORE=.o:$FIGNORE
+
 # Enable programmable completion features.
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion

@@ -15,5 +15,5 @@ fi
 
 # Set PATH so it includes our local bin if it exists.
 if [ -d "$HOME/bin" ] ; then
-  PATH="$HOME/bin:$PATH"
+  PATH="$HOME/bin:/usr/local/bin:$PATH"
 fi
