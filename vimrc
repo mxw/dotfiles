@@ -156,7 +156,7 @@ inoremap jj <Esc>
 inoremap kj <Esc>
 
 " Enter command mode more easily.
-nnoremap ; :
+"nnoremap ; :
 
 " Make Y behave more like other operators.
 nnoremap Y y$
