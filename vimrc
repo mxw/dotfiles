@@ -162,7 +162,10 @@ nnoremap Y y$
 noremap  Q gq
 nnoremap <leader>q Q
 
-" Move by screen line rather than file line.
+" Replace <C-a> to accommodate screen escape character.
+inoremap <C-z> <C-a>
+
+" Move by display line rather than file line.
 nnoremap j gj
 nnoremap k gk
 
