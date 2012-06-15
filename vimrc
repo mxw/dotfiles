@@ -155,9 +155,6 @@ nnoremap <leader>p  :pclose<CR>
 inoremap jj <Esc>
 inoremap kj <Esc>
 
-" Enter command mode more easily.
-"nnoremap ; :
-
 " Make Y behave more like other operators.
 nnoremap Y y$
 
@@ -192,6 +189,14 @@ nnoremap <silent> <leader>w :%s/\s\+$//<CR>:let @/=''<CR>''
 
 " Convert filetype to unix.
 nnoremap <leader>ff :e ++ff=dos<CR>:setlocal ff=unix<CR>
+
+" Command-line pseudo-emacs keybindings.
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-b> <C-Left>
+cnoremap <C-f> <C-Right>
+cnoremap <C-d> <Delete>
+cnoremap <C-k> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
 
 " Only cabbrev actual commands (rather than also, say, search terms).
 fu! SingleQuote(str)
