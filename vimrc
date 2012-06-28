@@ -153,7 +153,7 @@ nnoremap <leader>p  :pclose<CR>
 
 " Exit insert mode more easily.
 inoremap jj <Esc>
-inoremap kj <Esc>
+inoremap kjk <Esc>
 
 " Make Y behave more like other operators.
 nnoremap Y y$
@@ -181,7 +181,7 @@ noremap! <ESC>[1;5D <C-Left>
 
 " Other useful leader maps.
 nnoremap <leader>m  :make<CR>
-nnoremap <leader>r  <C-l>
+nnoremap <leader>l  <C-l>
 nnoremap <leader>v  <C-w>v
 
 " Toggle spellchecking.
