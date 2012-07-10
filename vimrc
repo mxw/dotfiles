@@ -268,9 +268,6 @@ endif
 " NERDTree - Toggle buffer.
 nnoremap <leader><Space> :NERDTreeToggle<CR><C-w>=
 
-" NERDTree - Open NERDTree if no files are opened.
-au vimenter * if !argc() | NERDTree | endif
-
 " NERDTree - Quit vim when all other windows have been closed.
 au BufEnter *
   \ if (winnr("$") == 1 && exists("b:NERDTreeType") &&
@@ -302,10 +299,6 @@ let g:tex_flavor='latex'
 
 " Set maximum line length.
 au FileType readme,text set tw=79
-
-" PHP *, #, and :tag support.
-"au FileType php setlocal iskeyword+=$
-"au FileType php setlocal iskeyword+=:,- iskeyword-=<
 
 " Kill any trailing whitespace on save.
 fu! <SID>StripTrailingWhitespaces()
