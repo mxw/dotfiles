@@ -24,6 +24,7 @@
   pop = stash pop
   s = status
   sh = show
+  sw = show --ignore-space-change
   shove = "!f() { git stash && git push && git pop; }; f"
   st = stash
   sup = "!f() { git stash && git up && git pop; }; f"
