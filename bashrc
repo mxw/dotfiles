@@ -73,6 +73,8 @@ if [ -x /usr/bin/dircolors -o -x /usr/local/bin/dircolors ]; then
 
   if [ "$OS" = 'darwin' -a -x /usr/local/bin/gls ]; then
     alias ls='gls --color=auto'
+  else
+    alias ls='ls --color=auto'
   fi
 
   #alias dir='dir --color=auto'
