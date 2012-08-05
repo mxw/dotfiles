@@ -1,5 +1,7 @@
-ForwardAgent yes
-
+Host sky
+  HostName mxawng.com
+  User mxw
+  ForwardAgent yes
 Host nice
   HostName nice.fas.harvard.edu
   User maxwang
