@@ -13,7 +13,8 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
-# Set PATH so it includes our local bin if it exists.
+# Update PATH.
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 if [ -d "$HOME/bin" ] ; then
-  PATH="$HOME/bin:/usr/local/bin:$PATH"
+  PATH="$HOME/bin:$PATH"
 fi

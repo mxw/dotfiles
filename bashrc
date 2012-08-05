@@ -67,10 +67,11 @@ case "$TERM" in
     ;;
 esac
 
-# Enable color support of ls and grep.  Always use GNU ls!
+# Enable color support of ls and grep.
 if [ -x /usr/bin/dircolors -o -x /usr/local/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
+  # Always use a colorized GNU ls.
   if [ "$OS" = 'darwin' -a -x /usr/local/bin/gls ]; then
     alias ls='gls --color=auto'
   else
