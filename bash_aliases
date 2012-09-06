@@ -15,3 +15,5 @@ alias texclean='rm -f *.aux *.log; rm *.pdf'
 
 # filesystem navigation
 alias hub='cd ~/Documents/hub'
+alias motmot='cd ~/Documents/git/motmot'
+alias skym='ssh skym -t "screen -UxRR"'
