@@ -144,7 +144,7 @@ nnoremap <C-p> :bprev<CR>
 " Quickfix and preview windows.
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :cclose<CR>
-nnoremap <leader>p  :pclose<CR>
+nnoremap <leader>zz :pclose<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""
@@ -186,6 +186,9 @@ nnoremap <leader>v  <C-w>v
 
 " Toggle spellchecking.
 nnoremap <leader>s  :setlocal spell!<CR>
+
+" Toggle paste mode.
+nnoremap <leader>p  :setlocal paste!<CR>
 
 " Remove trailing whitespace.
 nnoremap <silent> <leader>w :%s/\s\+$//<CR>:let @/=''<CR>''
@@ -298,7 +301,7 @@ au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 let g:tex_flavor='latex'
 
 " Set maximum line length.
-au FileType mkd,readme,tex,text set tw=79
+au FileType mkd,readme,tex,text,txt set tw=79
 
 " Kill any trailing whitespace on save.
 fu! <SID>StripTrailingWhitespaces()
@@ -307,6 +310,6 @@ fu! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   call cursor(l, c)
 endfu
-au FileType c,cabal,cpp,haskell,javascript,mkd,ocaml,php,python,readme,tex,text
+au FileType c,cabal,cpp,haskell,javascript,mkd,ocaml,php,python,readme,tex,text,txt
   \ au BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
