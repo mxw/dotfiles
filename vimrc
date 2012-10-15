@@ -301,7 +301,7 @@ au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 let g:tex_flavor='latex'
 
 " Set maximum line length.
-au FileType mkd,readme,tex,text,txt set tw=79
+au FileType mkd,readme,tex,text set tw=79
 
 " Kill any trailing whitespace on save.
 fu! <SID>StripTrailingWhitespaces()
@@ -310,6 +310,6 @@ fu! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   call cursor(l, c)
 endfu
-au FileType c,cabal,cpp,haskell,javascript,mkd,ocaml,php,python,readme,tex,text,txt
+au FileType c,cabal,cpp,haskell,javascript,mkd,ocaml,php,python,readme,tex,text
   \ au BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
