@@ -3,6 +3,7 @@ set sw=2
 
 " output format
 let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf'
 
 " pdf viewer
 if has("unix")

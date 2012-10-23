@@ -11,7 +11,7 @@ alias emacs='emacs -nw'
 # miscellaneous
 alias rm='rm -i'
 alias opn='xdg-open 2> /dev/null'
-alias texclean='rm -f *.aux *.log'
+alias texclean='rm -f *.aux *.log *.bbl *.blg'
 
 # filesystem navigation
 alias hub='cd ~/Documents/hub'
