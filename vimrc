@@ -164,6 +164,8 @@ nnoremap <leader>q Q
 
 " Replace <C-a> to accommodate screen escape character.
 inoremap <C-z> <C-a>
+nnoremap <leader>a <C-a>
+nnoremap <leader>x <C-x>
 
 " Move by display line rather than file line.
 nnoremap j gj
