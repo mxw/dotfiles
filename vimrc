@@ -312,6 +312,13 @@ fu! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   call cursor(l, c)
 endfu
-au FileType c,cabal,cpp,haskell,javascript,mkd,ocaml,php,python,readme,tex,text
+au FileType c,cabal,cpp,haskell,javascript,mkd,ocaml,php,python,ruby,readme,tex,text
   \ au BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
+
+
+""""""""""""""""""""""""""""""""""""""""""
+" Vimscript
+""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <leader>n :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>

@@ -8,6 +8,9 @@ Host nice
 Host seas
   HostName login.seas.harvard.edu
   User maxwang
+Host mit
+  HostName athena.dialup.mit.edu
+  User mxawng
 Host hub
   HostName hcs.harvard.edu
   User hub
