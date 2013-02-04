@@ -49,6 +49,9 @@ set scrolljump=5      " scroll five lines at a time
 " Folding.
 set nofoldenable      " no folding
 
+" Mouse.
+set mouse=            " no mouse
+
 " Backspace over everything.
 set backspace=indent,eol,start
 
