@@ -302,8 +302,9 @@ nnoremap <leader>gh :Gbrowse<CR>
 " Use skeletal template files.
 au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 
-" Set LaTeX flavor.
+" Set language defaults.
 let g:tex_flavor='latex'
+let g:sql_type_default='mysql'
 
 " Set maximum line length.
 au FileType mkd,readme,tex,text set tw=79
