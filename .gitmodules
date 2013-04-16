@@ -28,3 +28,6 @@
 [submodule "vim/bundle/ruby"]
 	path = vim/bundle/ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "vim/bundle/vim-latex"]
+	path = vim/bundle/vim-latex
+	url = git@github.com:mxw/vim-latex.git
