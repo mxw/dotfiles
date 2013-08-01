@@ -18,8 +18,8 @@ HISTFILESIZE=2000
 # Append to the history file rather than overwriting.
 shopt -s histappend
 
-# Check the window size after each command and, if necessary, update the
-# values of LINES and COLUMNS.
+# Check the window size after each command and, if necessary, update the values
+# of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # Make less more friendly for non-text input files, see lesspipe(1).
@@ -95,8 +95,13 @@ fi
 export FIGNORE=.o:$FIGNORE
 
 # Enable programmable completion features.
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  . /etc/bash_completion
+if ! shopt -oq posix; then
+  if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+  if [ -n $(command -v brew) -a -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 # Use vim.
