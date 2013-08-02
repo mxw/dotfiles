@@ -1,3 +1,6 @@
+[submodule "vim/bundle/coffeescript"]
+	path = vim/bundle/coffeescript
+	url = git://github.com/kchmck/vim-coffee-script.git
 [submodule "vim/bundle/css3"]
 	path = vim/bundle/css3
 	url = git://github.com/hail2u/vim-css3-syntax.git
@@ -31,12 +34,9 @@
 [submodule "vim/bundle/vim-latex"]
 	path = vim/bundle/vim-latex
 	url = git@github.com:mxw/vim-latex.git
-[submodule "vim/bundle/coffeescript"]
-	path = vim/bundle/coffeescript
-	url = git@github.com:kchmck/vim-coffee-script.git
 [submodule "vim/bundle/xhp"]
 	path = vim/bundle/xhp
-	url = git://github.com/mxw/vim-xhp.git
+	url = git@github.com:mxw/vim-xhp.git
 [submodule "vim/bundle/yaml-header"]
 	path = vim/bundle/yaml-header
-	url = git://github.com/mxw/vim-yaml-header.git
+	url = git@github.com:mxw/vim-yaml-header.git
