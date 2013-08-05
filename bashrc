@@ -99,7 +99,7 @@ if ! shopt -oq posix; then
   if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-  if [ -n $(command -v brew) ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
+  if $(command -v brew) && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
