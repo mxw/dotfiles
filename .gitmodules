@@ -37,6 +37,3 @@
 [submodule "vim/bundle/xhp"]
 	path = vim/bundle/xhp
 	url = git@github.com:mxw/vim-xhp.git
-[submodule "vim/bundle/yaml-header"]
-	path = vim/bundle/yaml-header
-	url = git@github.com:mxw/vim-yaml-header.git
