@@ -307,7 +307,7 @@ let g:tex_flavor='latex'
 let g:sql_type_default='mysql'
 
 " Set maximum line length.
-au FileType mkd,readme,tex,text set tw=79
+au FileType liquid,markdown,readme,tex,text set tw=79
 
 " Kill any trailing whitespace on save.
 fu! <SID>StripTrailingWhitespaces()
