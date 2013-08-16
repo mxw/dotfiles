@@ -31,7 +31,7 @@
   sup = "!f() { git stash && git up && git pop; }; f"
   rmbr = branch -D
   up = pull --rebase
-  w = whatchanged
+  w = whatchanged --pretty=short
 
 [color]
   diff = auto
