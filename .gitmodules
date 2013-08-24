@@ -22,6 +22,9 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/prolog"]
+	path = vim/bundle/prolog
+	url = git@github.com:mxw/vim-prolog.git
 [submodule "vim/bundle/ruby"]
 	path = vim/bundle/ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
