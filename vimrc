@@ -316,7 +316,7 @@ fu! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   call cursor(l, c)
 endfu
-au FileType c,cabal,cpp,haskell,javascript,mkd,ocaml,php,python,ruby,readme,tex,text
+au FileType c,cabal,cpp,haskell,javascript,ocaml,php,python,ruby,readme,tex,text
   \ au BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
 
