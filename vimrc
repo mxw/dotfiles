@@ -268,6 +268,9 @@ else
   nnoremap <C-W>] <C-W>g<C-]>
 endif
 
+command! -nargs=1 -complete=tag Vtag vsp | tag <args>
+call Cabbrev('vtag', 'Vtag')
+
 
 """"""""""""""""""""""""""""""""""""""""""
 " Plugins
