@@ -45,6 +45,18 @@ fi
 
 COLOR_PROMPT=1
 
+# Make sure PROMPT_COMMAND has no trailing ';'.
+if [ ! -z "$PROMPT_COMMAND" ]; then
+  trailing_space="${PROMPT_COMMAND##*[![:space:]]}"
+
+  PROMPT_COMMAND="${PROMPT_COMMAND%$trailing_space}"
+  if [ "${PROMPT_COMMAND: -1}" == ';' ]; then
+    PROMPT_COMMAND="${PROMPT_COMMAND#;}"
+  fi
+
+  unset trailing_space
+fi
+
 
 #-----------------------------------------
 # Sourcing.
