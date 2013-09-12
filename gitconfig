@@ -10,8 +10,8 @@
   ci = commit -a
   ca = commit --amend
   caa = commit -a --amend
-  cp = cherry-pick
   co = checkout
+  cp = cherry-pick
   d = diff
   dc = diff --cached
   dw = diff --ignore-space-change
@@ -28,7 +28,7 @@
   sh = show
   sw = show --ignore-space-change
   st = stash
-  sup = "!f() { git stash && git up && git pop; }; f"
+  sup = "!git stash && git pull --rebase && git stash pop"
   rmbr = branch -D
   up = pull --rebase
   w = whatchanged --pretty=short
@@ -51,7 +51,6 @@
   frag = cyan
   old = red
   new = green
-  whitespace = red blink
 
 [color "status"]
   added = yellow
@@ -62,6 +61,8 @@
   editor = /usr/bin/vim
   excludesfile = ~/.gitignore
 
+[advice]
+  statusHints = false
 [apply]
   whitespace = fix
 [branch]
@@ -74,6 +75,9 @@
 [merge]
   stat = true
 [push]
-  default = tracking
+  default = upstream
 [rerere]
   enabled = true
+
+[include]
+  path = ~/.gitoverride
