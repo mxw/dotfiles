@@ -1,6 +1,8 @@
 #
 # ~/.bashrc: Bash-specific shell configuration only.
 #
+# Much of this is adapted from the default Ubuntu ~/.bashrc.
+#
 
 # Check the window size after each command and, if necessary, update the values
 # of LINES and COLUMNS.
