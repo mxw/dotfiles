@@ -136,58 +136,57 @@ var dell30 = new Monitor('2560x1600');
 //  Layouts.
 //
 
-var layouts = [
-  S.layout('1-monitor', {
-    'Google Chrome': {
-      operations: [mbp15.full()],
-      'ignore-fail': true,
-    },
-    'Microsoft Outlook': {
-      operations: [mbp15.full()],
-    },
-    'Textual': {
-      operations: [
-        S.op('push', {direction: 'left', style: 'center'})
-      ],
-    },
-    'Pandora': {
-      operations: [
-        S.op('push', {direction: 'right', style: 'center'})
-      ],
-    },
-  }),
+S.layout('1-monitor', {
+  'Google Chrome': {
+    operations: [mbp15.full()],
+    'ignore-fail': true,
+    'repeat': true,
+  },
+  'Microsoft Outlook': {
+    operations: [mbp15.full()],
+  },
+  'Textual': {
+    operations: [
+      S.op('push', {direction: 'left', style: 'center'})
+    ],
+  },
+  'Pandora': {
+    operations: [
+      S.op('push', {direction: 'right', style: 'center'})
+    ],
+  },
+});
 
-  S.layout('2-monitor', {
-    'iTerm': {
-      operations: [dell30.center()],
-    },
-    'Google Chrome': {
-      operations: [function(w) {
-        if (w.main()) {
-          w.doop(dell30.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
-        } else {
-          w.doop(dell30.grid(2, 2).snapto(xy(1, 0), xy(1, 1)));
-        }
-      }],
-      'ignore-fail': true,
-      'repeat': true,
-    },
-    'Microsoft Outlook': {
-      operations: [mbp15.full()],
-    },
-    'Textual': {
-      operations: [dell30.grid(3, 3).center(xy(2, 2))],
-    },
-    'Pandora': {
-      operations: [dell30.grid(16, 16).snapto(xy(14, 9))],
-    }
-  }),
-];
+S.layout('2-monitor', {
+  'iTerm': {
+    operations: [dell30.center()],
+  },
+  'Google Chrome': {
+    operations: [function(w) {
+      if (w.main()) {
+        w.doop(dell30.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
+      } else {
+        w.doop(dell30.grid(2, 2).snapto(xy(1, 0), xy(1, 1)));
+      }
+    }],
+    'ignore-fail': true,
+    'repeat': true,
+  },
+  'Microsoft Outlook': {
+    operations: [mbp15.full()],
+  },
+  'Textual': {
+    operations: [dell30.grid(3, 3).center(xy(2, 2))],
+  },
+  'Pandora': {
+    operations: [dell30.grid(16, 16).snapto(xy(14, 9))],
+  },
+});
 
 function layout() {
   var count = S.screenCount();
-  if (n <= 2) {
-    layouts[n-1].run();
+  if (count <= 2) {
+    S.op('layout', {name: count + '-monitor'}).run();
   }
 }
 
