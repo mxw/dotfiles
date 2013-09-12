@@ -28,7 +28,7 @@ HISTFILESIZE=2000
 
 # Save history at end-of-command rather than end-of-session.  This is necessary
 # for history-saving in screen.
-PROMPT_COMMAND="${PROMPT_COMMAND:+; }history -a"
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }history -a"
 
 
 #-----------------------------------------
