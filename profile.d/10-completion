@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$PROFILE_SHELL" == 'bash' ] && shopt -oq posix; then
+  return
+fi
+
+if [ -f "$LOCAL_DIR/etc/bash_completion" ]; then
+  . $LOCAL_DIR/etc/bash_completion
+elif [ -r /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
+
+# Ignore silly filetypes.
+export FIGNORE=.o:$FIGNORE

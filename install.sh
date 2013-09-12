@@ -108,10 +108,9 @@ is_mac && install_dot "slate.js"
 
 mkdir -p "$HOME/.profile.d"
 install_dot "profile"
-#install_dot "profile.d/10-completion"
-#install_dot "profile.d/20-aliases"
-#is_mac && install_dot "profile.d/30-mac"
-#is_linux && install_dot "profile.d/30-linux"
+install_dot "profile.d/10-completion"
+install_dot "profile.d/20-color"
+install_dot "profile.d/30-aliases"
 
 # The SSH folder most likely already exists, and in any event we don't want to
 # manage it ourselves.  If we are creating it for the first time, however, we

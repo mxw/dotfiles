@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ -x /usr/bin/dircolors -o -x "$LOCAL_DIR/bin/dircolors" ]; then
+  # Run dircolors if it exists.
+  if [ -r "$HOME/.dircolors" ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+  else
+    eval "$(dircolors -b)"
+  fi
+
+  # Always use a colorized GNU ls.
+  if [ $OSNAME == 'darwin' ]; then
+    if [ -x "$LOCAL_DIR/bin/gls" ]; then
+      alias ls='gls --color=auto'
+    fi
+  else
+    alias ls='ls --color=auto'
+  fi
+
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi

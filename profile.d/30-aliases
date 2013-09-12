@@ -1,19 +1,19 @@
-# handy ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+#!/bin/bash
 
-# text editor aliasing
+# Handy ls aliases.
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+
+# Text editors.
 alias vim='vim -O'
 alias vi='vim'
 alias emacs='emacs -nw'
 
-# miscellaneous
+# File utilities.
 alias rm='rm -i'
 alias opn='xdg-open 2> /dev/null'
 alias texclean='rm -f *.aux *.log *.bbl *.blg'
 
-# filesystem navigation
-alias hub='cd ~/Documents/hub'
-alias motmot='cd ~/Documents/git/motmot'
+# SSH/screen shortcuts.
 alias skym='ssh skym -t "screen -UxRR"'
