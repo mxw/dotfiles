@@ -50,3 +50,5 @@ TITLE='\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]'
 case "$TERM" in
   xterm*|rxvt*) PS1="$TITLE$PS1" ;;
 esac
+
+BASE_PS1="$PS1"

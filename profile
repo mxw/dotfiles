@@ -57,6 +57,11 @@ if [ ! -z "$PROMPT_COMMAND" ]; then
   unset trailing_space
 fi
 
+# Source a modified __git_ps1 command.
+if [ -f "$HOME/.gitprompt" ]; then
+  . "$HOME/.gitprompt"
+fi
+
 
 #-----------------------------------------
 # Sourcing.
@@ -67,7 +72,18 @@ if [ -f "$HOME/.${PROFILE_SHELL}rc" ]; then
   . "$HOME/.${PROFILE_SHELL}rc"
 fi
 
+# Add git info to prompt.
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWDETACHED=1
+
+git_format="\[\e[36m\][\[\e[00m\]%s\[\e[36m\]]\[\e[00m\] "
+git_prompt="__git_ps1 '' '$BASE_PS1' '$git_format'"
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }$git_prompt"
+
 # Everything else.
 for file in $(ls "$HOME/.profile.d/"); do
   . "$HOME/.profile.d/$file"
 done
+
+unset git_format git_prompt
