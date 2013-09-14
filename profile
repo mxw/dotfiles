@@ -57,11 +57,6 @@ if [ ! -z "$PROMPT_COMMAND" ]; then
   unset trailing_space
 fi
 
-# Source a modified __git_ps1 command.
-if [ -f "$HOME/.gitprompt" ]; then
-  . "$HOME/.gitprompt"
-fi
-
 
 #-----------------------------------------
 # Sourcing.
@@ -85,5 +80,10 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }$git_prompt"
 for file in $(ls "$HOME/.profile.d/"); do
   . "$HOME/.profile.d/$file"
 done
+
+# Source a modified __git_ps1 command.
+if [ -f "$HOME/.gitprompt" ]; then
+  . "$HOME/.gitprompt"
+fi
 
 unset git_format git_prompt
