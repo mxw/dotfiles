@@ -51,4 +51,13 @@ case "$TERM" in
   xterm*|rxvt*) PS1="$TITLE$PS1" ;;
 esac
 
-BASE_PS1="$PS1"
+# Add git info to prompt.
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWDETACHED=1
+
+git_format="\[\e[36m\][\[\e[00m\]%s\[\e[36m\]]\[\e[00m\] "
+git_prompt="__git_ps1 '' '$PS1' '$git_format'"
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }$git_prompt"
+
+unset git_format git_prompt
