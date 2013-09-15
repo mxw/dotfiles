@@ -92,12 +92,11 @@
 # the colored output of "git status -sb" and are available only when
 # using __git_ps1 for PROMPT_COMMAND or precmd.
 
-# check whether printf supports -v
+# Check whether printf supports -v.
 __git_printf_supports_v=
 printf -v __git_printf_supports_v -- '%s' yes >/dev/null 2>&1
 
-# stores the divergence from upstream in $p
-# used by GIT_PS1_SHOWUPSTREAM
+# Stores the divergence from upstream in $p.  Used by GIT_PS1_SHOWUPSTREAM.
 __git_ps1_show_upstream ()
 {
   local key value
@@ -105,7 +104,7 @@ __git_ps1_show_upstream ()
   local upstream=git legacy="" verbose=""
 
   svn_remote=()
-  # get some config options from git-config
+  # Get some config options from git-config.
   local output="$(git config -z --get-regexp '^(svn-remote\..*\.url|bash\.showupstream)$' 2>/dev/null | tr '\0\n' '\n ')"
   while read -r key value; do
     case "$key" in
@@ -124,7 +123,7 @@ __git_ps1_show_upstream ()
     esac
   done <<< "$output"
 
-  # parse configuration values
+  # Parse configuration values.
   for option in ${GIT_PS1_SHOWUPSTREAM}; do
     case "$option" in
     git|svn) upstream="$option" ;;
@@ -133,12 +132,12 @@ __git_ps1_show_upstream ()
     esac
   done
 
-  # Find our upstream
+  # Find our upstream.
   case "$upstream" in
   git)    upstream="@{upstream}" ;;
   svn*)
-    # get the upstream from the "git-svn-id: ..." in a commit message
-    # (git-svn uses essentially the same procedure internally)
+    # Get the upstream from the "git-svn-id: ..." in a commit message
+    # (git-svn uses essentially the same procedure internally).
     local -a svn_upstream
     svn_upstream=($(git log --first-parent -1 \
           --grep="^git-svn-id: \(${svn_url_pattern#??}\)" 2>/dev/null))
@@ -151,7 +150,7 @@ __git_ps1_show_upstream ()
       done
 
       if [[ -z "$svn_upstream" ]]; then
-        # default branch name for checkouts with no layout:
+        # Default branch name for checkouts with no layout.
         upstream=${GIT_SVN_ID:-git-svn}
       else
         upstream=${svn_upstream#/}
@@ -162,12 +161,12 @@ __git_ps1_show_upstream ()
     ;;
   esac
 
-  # Find how many commits we are ahead/behind our upstream
+  # Find how many commits we are ahead/behind our upstream.
   if [[ -z "$legacy" ]]; then
     count="$(git rev-list --count --left-right \
         "$upstream"...HEAD 2>/dev/null)"
   else
-    # produce equivalent output to --count for older versions of git
+    # Produce equivalent output to --count for older versions of git.
     local commits
     if commits="$(git rev-list --left-right "$upstream"...HEAD 2>/dev/null)"
     then
@@ -185,7 +184,7 @@ __git_ps1_show_upstream ()
     fi
   fi
 
-  # calculate the result
+  # Calculate the result.
   if [[ -z "$verbose" ]]; then
     case "$count" in
     "") # no upstream

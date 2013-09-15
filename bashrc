@@ -57,7 +57,6 @@ GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWDETACHED=1
 
 git_format="\[\e[36m\][\[\e[00m\]%s\[\e[36m\]]\[\e[00m\] "
-git_prompt="__git_ps1 '' '$PS1' '$git_format'"
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }$git_prompt"
+PROMPT_COMMAND="$PROMPT_COMMAND; __git_ps1 '' '$PS1' '$git_format'"
 
-unset git_format git_prompt
+unset git_format
