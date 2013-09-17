@@ -329,3 +329,12 @@ au FileType c,cabal,cpp,haskell,javascript,ocaml,php,python,ruby,readme,tex,text
 """"""""""""""""""""""""""""""""""""""""""
 
 nnoremap <leader>n :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""
+" Sourcing
+""""""""""""""""""""""""""""""""""""""""""
+
+if filereadable($HOME."/.vimlocal")
+  source $HOME/.vimlocal
+endif
