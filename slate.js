@@ -159,9 +159,11 @@ S.layout('1-monitor', {
 
 S.layout('2-monitor', {
   'iTerm': {
-    operations: [
-      S.op('push', {direction: 'top', style: 'center'})
-    ],
+    operations: [S.op('push', {
+      screen: dell30.res,
+      direction: 'top',
+      style: 'center'}
+    )],
   },
   'Google Chrome': {
     operations: [function(w) {
@@ -181,9 +183,11 @@ S.layout('2-monitor', {
     operations: [dell30.grid(3, 3).snapto(xy(1, 1), xy(1, 1))],
   },
   'Pandora': {
-    operations: [
-      S.op('push', {direction: 'right', style: 'center'})
-    ],
+    operations: [S.op('push', {
+      screen: dell30.res,
+      direction: 'right',
+      style: 'center'}
+    )],
   },
 });
 
