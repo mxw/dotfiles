@@ -159,14 +159,16 @@ S.layout('1-monitor', {
 
 S.layout('2-monitor', {
   'iTerm': {
-    operations: [dell30.center()],
+    operations: [
+      S.op('push', {direction: 'top', style: 'center'})
+    ],
   },
   'Google Chrome': {
     operations: [function(w) {
       if (w.main()) {
         w.doop(dell30.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
       } else {
-        w.doop(dell30.grid(2, 2).snapto(xy(1, 0), xy(1, 1)));
+        w.doop(dell30.grid(2, 2).snapto(xy(1, 0), xy(1, 2)));
       }
     }],
     'ignore-fail': true,
@@ -176,10 +178,12 @@ S.layout('2-monitor', {
     operations: [mbp15.full()],
   },
   'Textual': {
-    operations: [dell30.grid(3, 3).center(xy(2, 2))],
+    operations: [dell30.grid(3, 3).snapto(xy(1, 1), xy(1, 1))],
   },
   'Pandora': {
-    operations: [dell30.grid(16, 16).snapto(xy(14, 9))],
+    operations: [
+      S.op('push', {direction: 'right', style: 'center'})
+    ],
   },
 });
 
