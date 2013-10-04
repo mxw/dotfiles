@@ -4,6 +4,9 @@
 # Much of this is adapted from the default Ubuntu ~/.bashrc.
 #
 
+# If not running interactively, don't do anything.
+[ -z "$PS1" ] && return
+
 # Check the window size after each command and, if necessary, update the values
 # of LINES and COLUMNS.
 shopt -s checkwinsize
