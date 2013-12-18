@@ -154,7 +154,8 @@ nnoremap <leader>zz :pclose<CR>
 " Maps
 """"""""""""""""""""""""""""""""""""""""""
 
-" Exit insert mode more easily.
+" Switch modes more easily.
+nnoremap ; :
 inoremap jj <Esc>
 inoremap kjk <Esc>
 
@@ -208,6 +209,9 @@ cnoremap <C-b> <C-Left>
 cnoremap <C-f> <C-Right>
 cnoremap <C-d> <Delete>
 cnoremap <C-k> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
+
+" Fewer fat fingers.
+noremap ZZ <C-z>
 
 " Only cabbrev actual commands (rather than also, say, search terms).
 fu! SingleQuote(str)
