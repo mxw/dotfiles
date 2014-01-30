@@ -16,6 +16,7 @@
   dc = diff --cached
   dw = diff --ignore-space-change
   drop = stash drop
+  fork = "!f() { git checkout -b $1; git checkout -; }; f"
   fixup = "!f() { git -c core.editor=true rebase -q -i $1 --exec \
            'git reset --soft -q HEAD^; git caa --no-edit -q'; }; f"
   l = log
@@ -27,7 +28,7 @@
   s = status
   sh = show
   sw = show --ignore-space-change
-  st = stash
+  sth = stash --keep-index
   sup = "!git stash && git pull --rebase && git stash pop"
   rmbr = branch -D
   up = pull --rebase
