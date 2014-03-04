@@ -210,5 +210,4 @@ S.def([mbp15.res, dell30.res], '2-monitor');
 S.bindAll({
   'space:ctrl':   layout,
   'return:ctrl':  S.op('relaunch'),
-  'delete:ctrl':  S.op('hint', {characters: 'HJKL;GFDSAYUIOPTREWQ'}),
 });
