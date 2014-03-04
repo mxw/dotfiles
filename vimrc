@@ -43,7 +43,6 @@ set smartcase         " ...iff all characters are lower case
 set infercase         " case-sensitive completion
 
 " Scrolling.
-set scrolloff=5       " scroll five lines from the edge
 set scrolljump=5      " scroll five lines at a time
 
 " Folding.
