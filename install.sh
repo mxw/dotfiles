@@ -113,6 +113,7 @@ install_dot "profile"
 install_dot "profile.d/10-completion"
 install_dot "profile.d/20-color"
 install_dot "profile.d/30-aliases"
+install_dot "bashrc"
 
 # The SSH folder most likely already exists, and in any event we don't want to
 # manage it ourselves.  If we are creating it for the first time, however, we
