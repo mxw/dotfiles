@@ -133,6 +133,7 @@ au InsertLeave * match ExtraWhiteSpace /\s\+$/
 set hidden            " keep hidden buffers around
 set splitright        " hsplit to the right
 set splitbelow        " vsplit to the left
+set laststatus=2      " always show a status line
 
 " Window navigation.
 noremap <C-j> <C-w>j
@@ -279,6 +280,9 @@ call Cabbrev('vstag', 'Vstag')
 """"""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""
+
+" Airline - Use powerline glyphs.
+let g:airline_powerline_fonts=1
 
 " NERDTree - Toggle buffer.
 nnoremap <leader><Space> :NERDTreeToggle<CR><C-w>=
