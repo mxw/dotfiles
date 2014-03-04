@@ -18,7 +18,7 @@
 	url = git://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/jsx"]
 	path = vim/bundle/jsx
-	url = git@github.com:mxw/vim-jsx.git
+	url = git://github.com/mxw/vim-jsx.git
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
 	url = git://github.com/tpope/vim-liquid.git
@@ -27,7 +27,7 @@
 	url = git://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/prolog"]
 	path = vim/bundle/prolog
-	url = git@github.com:mxw/vim-prolog.git
+	url = git://github.com/mxw/vim-prolog.git
 [submodule "vim/bundle/ruby"]
 	path = vim/bundle/ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
@@ -39,7 +39,7 @@
 	url = git://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/vim-latex"]
 	path = vim/bundle/vim-latex
-	url = git@github.com:mxw/vim-latex.git
+	url = git://github.com/mxw/vim-latex.git
 [submodule "vim/bundle/xhp"]
 	path = vim/bundle/xhp
-	url = git@github.com:mxw/vim-xhp.git
+	url = git://github.com/mxw/vim-xhp.git
