@@ -6,6 +6,11 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Local sourcing.
+if filereadable($HOME."/.vimrc.before")
+  source $HOME/.vimrc.before
+endif
+
 " vim >> vi.
 set nocompatible
 
@@ -339,9 +344,10 @@ nnoremap <leader>n :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "n
 
 
 """"""""""""""""""""""""""""""""""""""""""
-" Sourcing
+" Epilogue
 """"""""""""""""""""""""""""""""""""""""""
 
-if filereadable($HOME."/.vimlocal")
-  source $HOME/.vimlocal
+" Local sourcing.
+if filereadable($HOME."/.vimrc.after")
+  source $HOME/.vimrc.after
 endif
