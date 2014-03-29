@@ -26,9 +26,8 @@
   peek = show stash@{0}
   pop = stash pop
   s = status
-  sh = show
+  stow = stash --keep-index
   sw = show --ignore-space-change
-  sth = stash --keep-index
   sup = "!git stash && git pull --rebase && git stash pop"
   rmbr = branch -D
   up = pull --rebase
