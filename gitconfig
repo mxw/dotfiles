@@ -22,7 +22,7 @@
   heave = "!git submodule foreach 'git co master && git up'"
   l = log
   list = stash list
-  mkbr = "!f() { git checkout -b $1; }; f"
+  mkbr = "!f() { git checkout -b $1 origin/master; }; f"
   mvbr = branch -m
   peek = show stash@{0}
   pop = stash pop
