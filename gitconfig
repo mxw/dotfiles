@@ -19,6 +19,7 @@
   fork = "!f() { git checkout -b $1; git checkout -; }; f"
   fixup = "!f() { git -c core.editor=true rebase -q -i $1 --exec \
            'git reset --soft -q HEAD^; git caa --no-edit -q'; }; f"
+  heave = "!git submodule foreach 'git co master && git up'"
   l = log
   list = stash list
   mkbr = "!f() { git checkout -b $1; }; f"
