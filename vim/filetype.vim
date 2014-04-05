@@ -1,3 +1,7 @@
+" filetype.vim
+" Maintainer:   Max Wang <mxawng@gmail.com>
+" URL:          https://github.com/mxw/dotfiles
+
 if exists("did_load_filetypes")
   finish
 endif

@@ -1,9 +1,7 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tex.vim
-"
-" @author Max Wang
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim ftplugin file
+" Language:     TeX
+" Maintainer:   Max Wang <mxawng@gmail.com>
+" URL:          https://github.com/mxw/dotfiles
 
 " Indenting.
 setl shiftwidth=2
