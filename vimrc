@@ -12,6 +12,9 @@ endif
 " vim >> vi.
 set nocompatible
 
+" Source pathogen.
+runtime pathogen/autoload/pathogen.vim
+
 " Call pathogen.
 filetype off
 call pathogen#infect()
