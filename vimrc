@@ -71,28 +71,6 @@ set modelines=0
 
 
 """"""""""""""""""""""""""""""""""""""""""
-" Cache and backups
-""""""""""""""""""""""""""""""""""""""""""
-
-" Save marks for ' files, registers for " files, and : lines of history.
-set viminfo='20,"20,:50
-
-" History and undo caches.
-set history=50        " not too much history
-set undolevels=1000   " lots of undo!
-
-" Keep backup junk out of cwd.
-set directory=~/tmp//,/tmp//,.
-set backupdir=~/tmp//,/tmp//,.
-
-" Save cursor position for reopening.
-au BufReadPost *
-  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-  \   exe "normal! g'\"" |
-  \ endif
-
-
-""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlighting and indent
 """"""""""""""""""""""""""""""""""""""""""
 
@@ -120,6 +98,28 @@ au ColorScheme * hi ExtraWhitespace guibg=red
 au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
+
+
+""""""""""""""""""""""""""""""""""""""""""
+" Cache and backups
+""""""""""""""""""""""""""""""""""""""""""
+
+" Save marks for ' files, registers for " files, and : lines of history.
+set viminfo='20,"20,:50
+
+" History and undo caches.
+set history=50        " not too much history
+set undolevels=1000   " lots of undo!
+
+" Keep backup junk out of cwd.
+set directory=~/tmp//,/tmp//,.
+set backupdir=~/tmp//,/tmp//,.
+
+" Save cursor position for reopening.
+au BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""
