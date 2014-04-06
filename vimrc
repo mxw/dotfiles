@@ -67,6 +67,7 @@ set vb t_vb=          " no visual bells
 set backspace=indent,eol,start
 
 " Get rid of security holes.
+set nomodeline
 set modelines=0
 
 
