@@ -184,9 +184,9 @@ nnoremap <leader>l  <C-l>
 nnoremap <leader>v  <C-w>v
 
 " Toggle spellchecking and paste.
-nnoremap <leader>s  :setlocal spell!<CR>
-nnoremap <leader>p  :setlocal paste!<CR>
-nnoremap <leader>t  :setlocal list!<CR>
+nnoremap <leader>s  :setl spell!<CR>:setl spell?<CR>
+nnoremap <leader>p  :setl paste!<CR>:setl paste?<CR>
+nnoremap <leader>t  :setl list!<CR>:setl list?<CR>
 
 " Remove trailing whitespace.
 nnoremap <silent> <leader>w :%s/\s\+$//<CR>:let @/=''<CR>''
