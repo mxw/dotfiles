@@ -30,15 +30,19 @@ let mapleader=','
 " Display.
 set ruler             " show cursor coordinates
 set title             " show filename
+set nonumber          " hide line numbers
 set showcmd           " show normal mode commands as they are entered
-set showmode          " show {insert,visual} mode in the command line
-set showmatch         " flash matching open {paren,bracket,brace}
+set showmode          " show editing mode in status line
+set showmatch         " flash matching delimiters
+
+set nolist            " no metacharacters
+set listchars=tab:>-  " but show tabs if we turn it on
 
 " Autocomplete.
 set wildmode=longest,list,full
 set wildmenu
 set wildignore+=*.o,*.pyc,*.aux,*.cmi,*.cmo,*.cmx
-set completeopt=menu,preview
+set completeopt=menu,menuone,preview
 
 " Search.
 set nohlsearch        " don't persist search highlighting
@@ -49,23 +53,18 @@ set smartcase         " ...iff all characters are lower case
 set infercase         " case-sensitive completion
 
 " Scrolling.
+set wrap              " wrap overlong lines
+set scrolloff=0       " don't scroll unless necessary
 set scrolljump=5      " scroll five lines at a time
 
-" Folding.
+" Turn things off.
 set nofoldenable      " no folding
-
-" Mouse.
 set mouse=            " no mouse
+set noerrorbells      " no error bells
+set vb t_vb=          " no visual bells
 
 " Backspace over everything.
 set backspace=indent,eol,start
-
-" Automatically re-read modified files.
-set autoread
-
-" Turn off error bells.
-set noerrorbells
-set vb t_vb=
 
 " Get rid of security holes.
 set modelines=0
@@ -113,6 +112,7 @@ set tabstop=2         " number of spaces per tab when viewing
 set softtabstop=2     " number of spaces per tab when inserting
 set expandtab         " sub spaces for tabs
 set smarttab          " make tab key obey indent rules specified above
+set shiftround        " make > and < round to shiftwidth
 
 " Highlight trailing whitespace.
 hi ExtraWhitespace ctermbg=red guibg=red
@@ -121,14 +121,6 @@ au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
-" Highlight overlong lines.
-"hi OverLength ctermbg=magenta ctermfg=gray guibg=#592929
-"match OverLength /\%81v.\+/
-
-" Highlight literal tabs.
-"syn match tab display "\t"
-"hi link tab Error
-
 
 """"""""""""""""""""""""""""""""""""""""""
 " Buffers and windows
@@ -136,6 +128,7 @@ au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 " Settings.
 set hidden            " keep hidden buffers around
+set autoread          " automatically re-read modified files
 set splitright        " hsplit to the right
 set splitbelow        " vsplit to the left
 set laststatus=2      " always show a status line
@@ -185,28 +178,27 @@ nnoremap k gk
 nnoremap <leader><Tab> %
 vnoremap <leader><Tab> %
 
-" Make <C-Right> and <C-Left> behave as in emacs.
-noremap  <ESC>[1;5C <C-Right>
-noremap  <ESC>[1;5D <C-Left>
-noremap! <ESC>[1;5C <C-Right>
-noremap! <ESC>[1;5D <C-Left>
-
 " Other useful leader maps.
 nnoremap <leader>m  :make<CR>
 nnoremap <leader>l  <C-l>
 nnoremap <leader>v  <C-w>v
 
-" Toggle spellchecking.
+" Toggle spellchecking and paste.
 nnoremap <leader>s  :setlocal spell!<CR>
-
-" Toggle paste mode.
 nnoremap <leader>p  :setlocal paste!<CR>
+nnoremap <leader>t  :setlocal list!<CR>
 
 " Remove trailing whitespace.
 nnoremap <silent> <leader>w :%s/\s\+$//<CR>:let @/=''<CR>''
 
 " Convert filetype to unix.
 nnoremap <leader>ff :e ++ff=dos<CR>:setlocal ff=unix<CR>
+
+" Make <C-Right> and <C-Left> behave as in emacs.
+noremap  <ESC>[1;5C <C-Right>
+noremap  <ESC>[1;5D <C-Left>
+noremap! <ESC>[1;5C <C-Right>
+noremap! <ESC>[1;5D <C-Left>
 
 " Command-line pseudo-emacs keybindings.
 cnoremap <C-a> <Home>
@@ -227,24 +219,6 @@ fu! Cabbrev(key, value)
   exe printf('cabbrev <expr> %s (getcmdtype() == ":" && getcmdpos() <= %d) ? %s : %s',
     \ a:key, 1+len(a:key), SingleQuote(a:value), SingleQuote(a:key))
 endfu
-
-" Use more standard regexps for search and replace.
-"call Cabbrev('/',   '/\v')
-"call Cabbrev('?',   '?\v')
-"call Cabbrev('s/',  's/\v')
-"call Cabbrev('%s/', '%s/\v')
-"call Cabbrev('s#',  's#\v')
-"call Cabbrev('%s#', '%s#\v')
-"call Cabbrev('s@',  's@\v')
-"call Cabbrev('%s@', '%s@\v')
-"call Cabbrev('s!',  's!\v')
-"call Cabbrev('%s!', '%s!\v')
-"call Cabbrev('s%',  's%\v')
-"call Cabbrev('%s%', '%s%\v')
-"call Cabbrev("'<,'>s/", "'<,'>s/\v")
-"call Cabbrev("'<,'>s#", "'<,'>s#\v")
-"call Cabbrev("'<,'>s@", "'<,'>s@\v")
-"call Cabbrev("'<,'>s!", "'<,'>s!\v")
 
 
 """"""""""""""""""""""""""""""""""""""""""
@@ -323,7 +297,7 @@ let g:tex_flavor='latex'
 let g:sql_type_default='mysql'
 
 " Set maximum line length.
-au FileType liquid,markdown,readme,tex,text set tw=79
+au FileType liquid,markdown,readme,tex,text setl tw=79
 
 " Kill any trailing whitespace on save.
 fu! <SID>StripTrailingWhitespaces()
