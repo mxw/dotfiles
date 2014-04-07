@@ -13,6 +13,9 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/hack"]
+	path = vim/bundle/hack
+	url = git://github.com/hhvm/vim-hack.git
 [submodule "vim/bundle/haml-sass"]
 	path = vim/bundle/haml-sass
 	url = git://github.com/tpope/vim-haml.git
