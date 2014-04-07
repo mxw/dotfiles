@@ -1,5 +1,4 @@
 " .vimrc file
-" Language:     Markdown
 " Maintainer:   Max Wang <mxawng@gmail.com>
 " URL:          https://github.com/mxw/dotfiles
 " Depends:      pathogen, solarized
