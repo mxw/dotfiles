@@ -5,6 +5,7 @@
 [alias]
   a = add
   aa = add -A
+  base = merge-base HEAD origin/master
   br = branch
   cm = commit
   ci = commit -a
