@@ -90,7 +90,6 @@ set tabstop=2         " number of spaces per tab when viewing
 set softtabstop=2     " number of spaces per tab when inserting
 set expandtab         " sub spaces for tabs
 set smarttab          " make tab key obey indent rules specified above
-set shiftround        " make > and < round to shiftwidth
 
 " Highlight trailing whitespace.
 hi ExtraWhitespace ctermbg=red guibg=red
