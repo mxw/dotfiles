@@ -10,6 +10,9 @@
 [submodule "vim/bundle/css3"]
 	path = vim/bundle/css3
 	url = git://github.com/hail2u/vim-css3-syntax.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
