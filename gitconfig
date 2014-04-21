@@ -17,7 +17,7 @@
   dc = diff --cached
   dw = diff --ignore-space-change
   drop = stash drop
-  fork = "!f() { git checkout -b $1; git checkout -; }; f"
+  fork = "!f() { git checkout -b $1; }; f"
   fixup = "!f() { git -c core.editor=true rebase -q -i $1 --exec \
            'git reset --soft -q HEAD^; git caa --no-edit -q'; }; f"
   heave = "!git submodule foreach 'git co master && git up'"
