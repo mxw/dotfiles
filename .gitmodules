@@ -31,6 +31,9 @@
 [submodule "vim/bundle/jsx"]
 	path = vim/bundle/jsx
 	url = git://github.com/mxw/vim-jsx.git
+[submodule "vim/bundle/latex"]
+	path = vim/bundle/latex
+	url = git://github.com/mxw/vim-latex.git
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
 	url = git://github.com/tpope/vim-liquid.git
@@ -49,9 +52,6 @@
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/vim-latex"]
-	path = vim/bundle/vim-latex
-	url = git://github.com/mxw/vim-latex.git
 [submodule "vim/bundle/xhp"]
 	path = vim/bundle/xhp
 	url = git://github.com/mxw/vim-xhp.git
