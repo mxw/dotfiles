@@ -26,6 +26,16 @@ fi
 
 
 #-----------------------------------------
+# Early sourcing.
+#-----------------------------------------
+
+# Source a shell-specific early config.
+if [ -f "$HOME/.${PROFILE_SHELL}rc.before" ]; then
+  . "$HOME/.${PROFILE_SHELL}rc.before"
+fi
+
+
+#-----------------------------------------
 # Shell and OS types.
 #-----------------------------------------
 
