@@ -97,6 +97,7 @@ if ! git config --get-regexp submodule* > /dev/null; then
 fi
 
 # Vroom vroom!
+install_dot "ctags"
 install_dot "dircolors"
 install_dot "emacs"
 install_dot "gitconfig"
