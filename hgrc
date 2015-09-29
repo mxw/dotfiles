@@ -1,0 +1,50 @@
+[ui]
+username = Max Wang <mxawng@gmail.com>
+style = ~/.hgrc.d/git-style.hg
+
+[alias]
+bm = bookmark
+bma = bookmark --remote
+base = log -T '{node}\n' -r 'ancestor(.,master)'
+ci = commit
+caa = commit --amend
+co = update
+cp = graft
+d = diff
+dw = diff --ignore-space-change
+info = !$HG summary && $HG status
+l = log
+s = status
+sw = show --ignore-space-change
+up = !$HG pull && $HG rebase -d master
+
+# git             | hg
+#-----------------+----------------------
+# checkout <rev>  | update <rev>
+# checkout .      | revert -a
+#                 | update --clean -r .
+# reset HEAD^     | reset .^
+# revert          | backout
+# add -p; commit  | record
+
+[diff]
+git = True
+
+[color]
+diff.diffline = blue
+diff.extended = blue
+diff.file_a = blue
+diff.file_b = blue
+diff.hunk = cyan
+diff.deleted = red
+diff.inserted = green
+
+[color]
+status.modified = yellow
+status.added = green
+status.removed = yellow
+status.deleted = red
+status.unknown = red
+
+[hooks]
+pre-merge.fail =

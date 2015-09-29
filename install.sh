@@ -103,6 +103,7 @@ install_dot "emacs"
 install_dot "gitconfig"
 install_dot "gitignore"
 install_dot "gitprompt"
+install_dot "hgrc"
 install_dot "inputrc"
 install_dot "screenrc"
 install_dot "vim"
@@ -115,6 +116,9 @@ install_dot "profile.d/10-completion"
 install_dot "profile.d/20-color"
 install_dot "profile.d/30-aliases"
 install_dot "bashrc"
+
+mkdir -p "$HOME/.hgrc.d"
+install_dot "hgrc.d/git-style.hg"
 
 # The SSH folder most likely already exists, and in any event we don't want to
 # manage it ourselves.  If we are creating it for the first time, however, we
