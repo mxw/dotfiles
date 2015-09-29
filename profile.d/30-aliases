@@ -14,7 +14,7 @@ alias emacs='emacs -nw'
 alias rm='rm -i'
 alias opn='xdg-open 2> /dev/null'
 alias texclean='rm -f *.aux *.log *.bbl *.blg'
-alias objclean='rm -f *.o *.pyc'
+alias objclean='rm -rf *.o *.pyc __pycache__'
 
 # SSH/screen shortcuts.
 alias skym='ssh skym -t "screen -UxRR"'
