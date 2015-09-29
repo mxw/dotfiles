@@ -111,8 +111,8 @@ set history=50        " not too much history
 set undolevels=1000   " lots of undo!
 
 " Keep backup junk out of cwd.
-set directory=~/tmp//,/tmp//,.
-set backupdir=~/tmp//,/tmp//,.
+set directory=~/tmp/swp//,/tmp//,.
+set backupdir=~/tmp/swp//,/tmp//,.
 
 " Save cursor position for reopening.
 au BufReadPost *
