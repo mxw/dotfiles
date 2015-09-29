@@ -29,6 +29,11 @@ fi
 # Early sourcing.
 #-----------------------------------------
 
+# Early local profile.
+if [ -f "$HOME/.profile.before" ]; then
+  . "$HOME/.profile.before"
+fi
+
 # Source a shell-specific early config.
 if [ -f "$HOME/.${PROFILE_SHELL}rc.before" ]; then
   . "$HOME/.${PROFILE_SHELL}rc.before"
