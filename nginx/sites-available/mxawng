@@ -1,0 +1,9 @@
+server {
+  listen 80;
+  server_name mxawng.com
+              www.mxawng.com
+              ;
+
+  index index.html;
+  root /home/mxw/www;
+}

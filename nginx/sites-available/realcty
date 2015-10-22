@@ -1,0 +1,22 @@
+server {
+  listen 80;
+  server_name realcty.org
+              www.realcty.org
+              realcty.mxawng.com
+              ;
+
+  access_log /var/tmp/realcty_access_log;
+  error_log /var/tmp/realcty_error_log;
+
+  include hhvm.conf;
+
+  index index.php;
+  root /home/mxw/realcty/mediawiki;
+
+  # Accept /mw/ prefix from old external links.
+  location /mw/ {
+    rewrite ^/mw/(.*)$ /$1;
+  }
+
+  include mediawiki.conf;
+}
