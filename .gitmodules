@@ -4,6 +4,9 @@
 [submodule "vim/bundle/airline"]
 	path = vim/bundle/airline
 	url = git://github.com/bling/vim-airline.git
+[submodule "vim/bundle/airline-themes"]
+	path = vim/bundle/airline-themes
+	url = git://github.com/vim-airline/vim-airline-themes.git
 [submodule "vim/bundle/coffeescript"]
 	path = vim/bundle/coffeescript
 	url = git://github.com/kchmck/vim-coffee-script.git
