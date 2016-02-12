@@ -48,3 +48,6 @@ status.unknown = red
 
 [hooks]
 pre-merge.fail =
+
+[extensions]
+prompt = ~/.hgrc.d/hg-prompt/prompt.py
