@@ -61,6 +61,3 @@
 [submodule "vim/bundle/xhp"]
 	path = vim/bundle/xhp
 	url = git://github.com/mxw/vim-xhp.git
-[submodule "hgrc.d/hg-prompt"]
-	path = hgrc.d/hg-prompt
-	url = ./hgrc.d/hg-prompt
