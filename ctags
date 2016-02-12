@@ -1,1 +1,0 @@
---regex-c++=/^\s*using\s+(\w+)\s=/\1/u,using/
