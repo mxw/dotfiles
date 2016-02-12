@@ -18,10 +18,23 @@ umask 022
 export VISUAL="vim"
 export EDITOR="vim"
 
-# Update PATH.
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-if [ -d "$HOME/bin" ]; then
-  PATH="$HOME/bin:$PATH"
+
+#-----------------------------------------
+# Shell and OS types.
+#-----------------------------------------
+
+if [ -n "$BASH_VERSION" ]; then
+  PROFILE_SHELL=bash
+elif [ -n "$ZSH_VERSION" ]; then
+  PROFILE_SHELL=zsh
+fi
+
+OSNAME=${OSTYPE//[0-9.]/}
+
+if [ "$OS_NAME" == 'darwin' ] && command -v brew >/dev/null 2>&1; then
+  LOCAL_DIR=$(brew --prefix)
+else
+  LOCAL_DIR='/usr/local'
 fi
 
 
@@ -41,21 +54,13 @@ fi
 
 
 #-----------------------------------------
-# Shell and OS types.
+# Path and prompt.
 #-----------------------------------------
 
-if [ -n "$BASH_VERSION" ]; then
-  PROFILE_SHELL=bash
-elif [ -n "$ZSH_VERSION" ]; then
-  PROFILE_SHELL=zsh
-fi
-
-OSNAME=${OSTYPE//[0-9.]/}
-
-if [ "$OS_NAME" == 'darwin' ] && command -v brew >/dev/null 2>&1; then
-  LOCAL_DIR=$(brew --prefix)
-else
-  LOCAL_DIR='/usr/local'
+# Update PATH.
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+if [ -d "$HOME/bin" ]; then
+  PATH="$HOME/bin:$PATH"
 fi
 
 COLOR_PROMPT=1
