@@ -92,7 +92,10 @@ for file in $(ls "$HOME/.profile.d/"); do
   . "$HOME/.profile.d/$file"
 done
 
-# Source a modified __git_ps1 command.
+# Source our SCM prompt scripts.
 if [ -f "$HOME/.gitprompt" ]; then
   . "$HOME/.gitprompt"
+fi
+if [ -f "$HOME/.hgrc.d/hgprompt" ]; then
+  . "$HOME/.hgrc.d/hgprompt"
 fi

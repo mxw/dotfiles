@@ -1,0 +1,187 @@
+#!/bin/bash
+#
+# Spinoff of __git_ps1(), but for the far inferior Mercurial.  By default,
+# calling __hg_ps1() never invokes hg, because hg is comically slow.
+#
+# Author: Max Wang <mxawng@gmail.com>.
+
+# Check whether printf supports -v.
+__hg_printf_supports_v=
+  printf -v __hg_printf_supports_v -- '%s' yes >/dev/null 2>&1
+
+# Echo the absolute path to the .hg/ directory of $PWD's repo.
+__hg_find_dir() {
+  local d=$PWD
+  while : ; do
+    if [ -d "$d/.hg" ]; then
+      echo "$d/.hg"
+      return
+    fi
+    [ "$d" = / ] && break
+    d=$(cd -P "$d/.." && echo "$PWD")
+  done
+}
+
+# Inject color codes into the various components of the hg prompt.
+#
+# This helper is meant to be called from __hg_ps1().
+__hg_ps1_colorize() {
+  if [[ -n ${ZSH_VERSION-} ]]; then
+    local c_red='%F{red}'
+    local c_green='%F{green}'
+    local c_yellow='%F{yellow}'
+    local c_blue='%F{blue}'
+    local c_cyan='%F{cyan}'
+    local c_clear='%f'
+  else
+    # Using \[ and \] around colors is necessary to prevent
+    # issues with command line editing/browsing/completion!
+    local c_red="\[\e[31m\]"
+    local c_green="\[\e[32m\]"
+    local c_yellow="\[\e[33m\]"
+    local c_blue="\[\e[34m\]"
+    local c_cyan="\[\e[36m\]"
+    local c_clear="\[\e[0m\]"
+  fi
+
+  b="$c_cyan$b"
+  if [ -n "$o" ]; then
+    s="$c_clear$s"
+    o="$c_cyan$o"
+  fi
+  z="$c_clear$z"
+  if [ -n "$u" ]; then
+    u="$c_red$u"
+  fi
+  r="$c_clear$r"
+}
+
+# Format (part of) a PS1 string.
+#
+# Has the same API as __git_ps1():
+#
+#   - If called with 0 or 1 arguments, print the output.  The singular argument
+#     is interpreted as a format string.  This mode should be used when calling
+#     from PS1 using command substitution.
+#
+#   - If called with 2 or 3 arguments, reassign PS1.  The first two arguments
+#     are a prefix and a suffix to append to the state string when setting PS1,
+#     and the optional third argument is the format string.  This mode should
+#     be used when calling from PROMPT_COMMAND.
+__hg_ps1() {
+  local pcmode=no
+  local prefix='\u@\h:\w '
+  local suffix='\$ '
+  local fmt=' (%s)'
+
+  case "$#" in
+    0|1)
+      fmt="${1:-$fmt}"
+    ;;
+    2|3)
+      pcmode=yes
+      prefix="$1"
+      suffix="$2"
+      fmt="${3:-$fmt}"
+    ;;
+    *) return ;;
+  esac
+
+  local hg=$(__hg_find_dir)
+  if [ -z "$hg" ]; then
+    if [ $pcmode = yes ]; then
+      PS1="$prefix$suffix"
+    fi
+    return
+  fi
+
+  # Current tip hash.
+  local tip=
+  if [ -f "$hg/dirstate" ]; then
+    tip=$(hexdump -vn 20 -e '1/1 "%02x"' $hg/dirstate)
+  fi
+
+  # Active bookmark.
+  local b=  # active bookmark (or hash, if none)
+  local u=  # needs update?
+
+  if [ -f "$hg/bookmarks.current" ]; then
+    read b 2> /dev/null < "$hg/bookmarks.current"
+
+    # Grab the bookmarks file.
+    local bmfile="$hg/bookmarks"
+    if [ -f "$hg/sharedpath" ]; then
+      read bmfile 2> /dev/null < "$hg/sharedpath"
+      bmfile="$bmfile/bookmarks"
+    fi
+
+    # Check to see if the active bookmark needs update.
+    if [ -f "$bmfile" ]; then
+      local active=$(grep --color=never " $b$" "$bmfile")
+      if [ "$tip" != "${active%% *}" ]; then
+        u="!"
+      fi
+    fi
+  else
+    # No active bookmark.
+    b="&(${tip:0:7}...)"
+  fi
+
+  # Rebase metadata.
+  local r=    # prompt substring
+  local left= # steps remaining
+
+  if [ -f "$hg/histedit-state" ]; then
+    r="|REBASE-i"
+    left=$(sed '5q;d' "$hg/histedit-state")
+  elif [ -f "$hg/rebasestate" ]; then
+    r="|REBASE"
+  elif [ -f "$hg/bisect.state" ]; then
+    r="|BISECT"
+  elif [ -f "$hg/graftstate" ]; then
+    r="|GRAFT"
+  elif [ -d "$hg/merge" ]; then
+    r="|MERGE"
+  elif [ -f "$hg/unshelverebasestate" ]; then
+    r="|UNSHELVE"
+  fi
+
+  if [ -n "$left" ]; then
+    r="$r (+$left)"
+  fi
+
+  # Remote bookmark.
+  local s=  # separator
+  local o=  # origin
+  if [ -f "$hg/remotenames" ]; then
+    local remote=$(grep --color=never "^$tip bookmarks " "$hg/remotenames")
+    s=':'
+    o=${remote##* remote/}
+  fi
+
+  # Branch.
+  local br=
+  if [ -f "$hg/branch" ]; then
+    read br 2> /dev/null < "$hg/branch"
+    if [ "$br" = 'default' ]; then
+      br="" # uninterested if default
+    fi
+  fi
+
+  local z="${HG_PS1_STATESEPARATOR-}"
+
+  __hg_ps1_colorize
+  local f="$u"  # flags
+  local hgstr="$b$s$o${f:+$z$f}$r"
+
+  if [ $pcmode = yes ]; then
+    if [ "${__git_printf_supports_v-}" = yes ]; then
+      printf -v hgstr -- "$fmt" "$hgstr"
+    else
+      hgstr=$(printf -- "$fmt" "$hgstr")
+    fi
+    PS1="$prefix$hgstr$suffix"
+  else
+    printf -- "$fmt" "$hgstr"
+  fi
+}
