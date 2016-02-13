@@ -155,8 +155,10 @@ __hg_ps1() {
   local o=  # origin
   if [ -f "$hg/remotenames" ]; then
     local remote=$(grep --color=never "^$tip bookmarks " "$hg/remotenames")
-    s=':'
     o=${remote##* remote/}
+    if [ -n "$o" ]; then
+      s=':'
+    fi
   fi
 
   # Branch.
@@ -170,7 +172,9 @@ __hg_ps1() {
 
   local z="${HG_PS1_STATESEPARATOR-}"
 
-  __hg_ps1_colorize
+  if [ -n "${HG_PS1_SHOWCOLORHINTS-}" ]; then
+    __hg_ps1_colorize
+  fi
   local f="$u"  # flags
   local hgstr="$b$s$o${f:+$z$f}$r"
 

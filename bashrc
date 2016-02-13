@@ -65,7 +65,8 @@ scm_prompt() {
 }
 PROMPT_COMMAND="$PROMPT_COMMAND; scm_prompt"
 
-# Customize __git_ps1().
+# Customize prompts.
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWDETACHED=1
 GIT_PS1_SHOWDIRTYSTATE=1
+HG_PS1_SHOWCOLORHINTS=1
