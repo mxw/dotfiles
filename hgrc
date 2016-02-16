@@ -18,6 +18,8 @@ l = log
 s = status
 show = show -g
 up = !$HG pull && $HG rebase -d master
+whatchanged = !$HG log --style ~/.hgrc.d/whatchanged.hg
+w = whatchanged
 
 # git                 | hg
 #---------------------+----------------------

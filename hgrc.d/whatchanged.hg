@@ -1,0 +1,9 @@
+changeset = "\
+  {label('yellow', 'commit {node}')}
+  Author:    {author}\n
+  {indent(firstline(desc), '    ')}\n
+  {  if(file_mods, file_mods % "{label('yellow', 'M {file}\n')}")
+  }{ if(file_adds, file_adds % "{label('green',  'A {file}\n')}")
+  }{ if(file_dels, file_dels % "{label('red',    'D {file}\n')}")
+  }
+  "
