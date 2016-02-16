@@ -15,6 +15,7 @@ d = diff
 dw = diff --ignore-space-change
 info = !$HG summary && $HG status
 l = log
+restack = histedit -r 'last(first(ancestor(.,master)::., 2))'
 s = status
 show = show -g
 up = !$HG pull && $HG rebase -d master
