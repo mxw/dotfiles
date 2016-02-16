@@ -1,6 +1,7 @@
 changeset = "\
   {label('yellow', 'commit {node}')}
-  Author: {author}
-  Date:   {date(date, '%a %b %-d %T %Y')}\n
+  Author:    {author}
+  Date:      {date(date, '%a %b %-d %T %Y')}
+  {if(bookmarks, 'Bookmarks: {bookmarks % \"{bookmark}{ifeq(bookmark,active,\\\"*\\\")} \"}\n')}
   {indent(desc, '    ')}\n
   "

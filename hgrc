@@ -3,8 +3,9 @@ username = Max Wang <mxawng@gmail.com>
 style = ~/.hgrc.d/git-style.hg
 
 [alias]
+apc = record  # add -p; commit
 bm = bookmark
-bma = bookmark --remote
+bma = bookmark --all
 base = log -T '{node}\n' -r 'ancestor(.,master)'
 ci = commit
 caa = commit --amend
@@ -18,14 +19,15 @@ s = status
 sw = show --ignore-space-change
 up = !$HG pull && $HG rebase -d master
 
-# git             | hg
-#-----------------+----------------------
-# checkout <rev>  | update <rev>
-# checkout .      | revert -a
-#                 | update --clean -r .
-# reset HEAD^     | reset .^
-# revert          | backout
-# add -p; commit  | record
+# git                 | hg
+#---------------------+----------------------
+# checkout <h>        | update <h>
+# checkout .          | revert -a
+#                     | update --clean -r .
+# checkout <h> -- <f> | revert -r <h> <f>
+# reset HEAD^         | reset .^
+# revert              | backout
+# add -p; commit      | record
 
 [diff]
 git = True
