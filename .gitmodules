@@ -40,9 +40,6 @@
 [submodule "vim/bundle/latex"]
 	path = vim/bundle/latex
 	url = git://github.com/mxw/vim-latex.git
-[submodule "vim/bundle/lawrencium"]
-	path = vim/bundle/lawrencium
-	url = git://github.com/ludovicchabant/vim-lawrencium.git
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
 	url = git://github.com/tpope/vim-liquid.git
