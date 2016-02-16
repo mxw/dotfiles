@@ -87,12 +87,19 @@ __hg_ps1() {
     *) return ;;
   esac
 
+  # Get the .hg directory for the repo.
   local hg=$(__hg_find_dir)
   if [ -z "$hg" ]; then
     if [ $pcmode = yes ]; then
       PS1="$prefix$suffix"
     fi
     return
+  fi
+
+  # Get the shared .hg directory if we're a new-workdir.
+  local shared=$hg
+  if [ -f "$hg/sharedpath" ]; then
+    read shared 2> /dev/null < "$hg/sharedpath"
   fi
 
   # Current tip hash.
@@ -108,16 +115,9 @@ __hg_ps1() {
   if [ -f "$hg/bookmarks.current" ]; then
     read b 2> /dev/null < "$hg/bookmarks.current"
 
-    # Grab the bookmarks file.
-    local bmfile="$hg/bookmarks"
-    if [ -f "$hg/sharedpath" ]; then
-      read bmfile 2> /dev/null < "$hg/sharedpath"
-      bmfile="$bmfile/bookmarks"
-    fi
-
     # Check to see if the active bookmark needs update.
-    if [ -f "$bmfile" ]; then
-      local active=$(grep --color=never " $b$" "$bmfile")
+    if [ -f "$shared/bookmarks" ]; then
+      local active=$(grep --color=never " $b$" "$shared/bookmarks")
       if [ "$tip" != "${active%% *}" ]; then
         u="!"
       fi
@@ -153,8 +153,8 @@ __hg_ps1() {
   # Remote bookmark.
   local s=  # separator
   local o=  # origin
-  if [ -f "$hg/remotenames" ]; then
-    local remote=$(grep --color=never "^$tip bookmarks " "$hg/remotenames")
+  if [ -f "$shared/remotenames" ]; then
+    local remote=$(grep --color=never "^$tip bookmarks " "$shared/remotenames")
     o=${remote##* remote/}
     if [ -n "$o" ]; then
       s=':'
