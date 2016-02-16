@@ -16,7 +16,7 @@ dw = diff --ignore-space-change
 info = !$HG summary && $HG status
 l = log
 s = status
-sw = show --ignore-space-change
+show = show -g
 up = !$HG pull && $HG rebase -d master
 
 # git                 | hg
