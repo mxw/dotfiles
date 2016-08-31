@@ -72,7 +72,7 @@ _.extend(Grid.prototype, {
    */
   snapto: function(cell, span) {
     // Default to noresize.
-    span = span || win.size;
+    span = span || xy(this.x, this.y);
 
     var screen = this.screen;
 
