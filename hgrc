@@ -1,5 +1,6 @@
 [ui]
 username = Max Wang <mxawng@gmail.com>
+interface = text
 style = ~/.hgrc.d/git-style.hg
 
 [alias]
@@ -12,7 +13,7 @@ caa = commit --amend
 co = update
 cp = graft
 d = diff
-dw = diff --ignore-space-change
+dw = diff --ignore-space-change --pager=yes
 info = !$HG summary && $HG status
 l = log
 s = status
@@ -50,5 +51,8 @@ status.removed = yellow
 status.deleted = red
 status.unknown = red
 
-[hooks]
-pre-merge.fail =
+[merge-tools]
+editmerge.premerge=keep-merge3
+
+[pager]
+attend-shelve = true
