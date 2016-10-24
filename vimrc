@@ -54,7 +54,7 @@ set infercase         " case-sensitive completion
 " Scrolling.
 set wrap              " wrap overlong lines
 set scrolloff=0       " don't scroll unless necessary
-set scrolljump=5      " scroll five lines at a time
+set scrolljump=1      " scroll one line at a time
 
 " Turn things off.
 set nofoldenable      " no folding
