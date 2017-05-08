@@ -146,14 +146,7 @@ S.layout('1-monitor', {
     operations: [mbp15.full()],
   },
   'Textual': {
-    operations: [
-      S.op('push', {direction: 'left', style: 'center'})
-    ],
-  },
-  'Pandora': {
-    operations: [
-      S.op('push', {direction: 'right', style: 'center'})
-    ],
+    operations: [mbp15.full()],
   },
 });
 
@@ -180,14 +173,7 @@ S.layout('2-monitor', {
     operations: [mbp15.full()],
   },
   'Textual': {
-    operations: [dell30.grid(3, 3).snapto(xy(1, 1), xy(1, 1))],
-  },
-  'Pandora': {
-    operations: [S.op('push', {
-      screen: dell30.res,
-      direction: 'right',
-      style: 'center'}
-    )],
+    operations: [mbp15.full()],
   },
 });
 
