@@ -106,14 +106,14 @@ _.extend(Grid.prototype, {
 //  Monitor object.
 //
 
-function Monitor(resolution) {
-  this.res = resolution;
+function Monitor(screen) {
+  this.screen = screen;
   this._grids = {};
 }
 _.extend(Monitor.prototype, {
   grid: function(x, y) {
     var dims = x + 'x' + y;
-    this._grids[dims] = this._grids[dims] || new Grid(this.res, xy(x, y));
+    this._grids[dims] = this._grids[dims] || new Grid(this.screen, xy(x, y));
 
     return this._grids[dims];
   },
@@ -153,7 +153,7 @@ S.layout('1-monitor', {
 S.layout('2-monitor', {
   'iTerm': {
     operations: [S.op('push', {
-      screen: dell30.res,
+      screen: dell30.screen,
       direction: 'top',
       style: 'center'}
     )],
@@ -184,8 +184,8 @@ function layout() {
   }
 }
 
-S.def([mbp15.res], '1-monitor');
-S.def([mbp15.res, dell30.res], '2-monitor');
+S.def([mbp15.screen], '1-monitor');
+S.def([mbp15.screen, dell30.screen], '2-monitor');
 
 
 //////////////////////////////////////////
