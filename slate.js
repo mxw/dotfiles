@@ -147,13 +147,13 @@ S.layout('1-monitor', {
   'Microsoft Outlook': {
     operations: [mbp15.full()],
   },
-  'Textual': {
+  'Textual IRC Client': {
     operations: [mbp15.full()],
   },
 });
 
 S.layout('2-monitor', {
-  'iTerm': {
+  'iTerm2': {
     operations: [S.op('push', {
       screen: dell30.screen,
       direction: 'top',
@@ -174,13 +174,13 @@ S.layout('2-monitor', {
   'Microsoft Outlook': {
     operations: [mbp15.full()],
   },
-  'Textual': {
+  'Textual IRC Client': {
     operations: [mbp15.full()],
   },
 });
 
 S.layout('3-monitor', {
-  'iTerm': {
+  'iTerm2': {
     operations: [S.op('push', {
       screen: dell30c.screen,
       direction: 'top',
@@ -201,7 +201,7 @@ S.layout('3-monitor', {
   'Microsoft Outlook': {
     operations: [mbp15.full()],
   },
-  'Textual': {
+  'Textual IRC Client': {
     operations: [mbp15.full()],
   },
 });
