@@ -127,8 +127,10 @@ _.extend(Monitor.prototype, {
   },
 });
 
-var mbp15  = new Monitor('1440x900');
-var dell30 = new Monitor('2560x1600');
+var mbp15  = new Monitor('1440x900');   // all layouts
+var dell30 = new Monitor('2560x1600');  // 2-screen only
+var dell30c = new Monitor(1); // 3-screen only
+var dell30r = new Monitor(2); // 3-screen only
 
 
 //////////////////////////////////////////
@@ -177,15 +179,43 @@ S.layout('2-monitor', {
   },
 });
 
+S.layout('3-monitor', {
+  'iTerm': {
+    operations: [S.op('push', {
+      screen: dell30c.screen,
+      direction: 'top',
+      style: 'center'}
+    )],
+  },
+  'Google Chrome': {
+    operations: [function(w) {
+      if (w.main()) {
+        w.doop(dell30r.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
+      } else {
+        w.doop(dell30r.grid(2, 2).snapto(xy(1, 0), xy(1, 2)));
+      }
+    }],
+    'ignore-fail': true,
+    'repeat': true,
+  },
+  'Microsoft Outlook': {
+    operations: [mbp15.full()],
+  },
+  'Textual': {
+    operations: [mbp15.full()],
+  },
+});
+
 function layout() {
   var count = S.screenCount();
-  if (count <= 2) {
+  if (count <= 3) {
     S.op('layout', {name: count + '-monitor'}).run();
   }
 }
 
 S.def([mbp15.screen], '1-monitor');
 S.def([mbp15.screen, dell30.screen], '2-monitor');
+S.def([mbp15.screen, dell30.screen, dell30.screen], '3-monitor');
 
 
 //////////////////////////////////////////
