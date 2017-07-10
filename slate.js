@@ -36,10 +36,8 @@ var win = {
 };
 
 
-//////////////////////////////////////////
-//
-//  Grid object.
-//
+///////////////////////////////////////////////////////////////////////////////
+// Grid object.
 
 function Grid(screen, dims) {
   this.screen = screen;
@@ -101,10 +99,8 @@ _.extend(Grid.prototype, {
 });
 
 
-//////////////////////////////////////////
-//
-//  Monitor object.
-//
+///////////////////////////////////////////////////////////////////////////////
+// Monitor object.
 
 function Monitor(screen) {
   this.screen = screen;
@@ -133,10 +129,8 @@ var dell30c = new Monitor(1); // 3-screen only
 var dell30r = new Monitor(2); // 3-screen only
 
 
-//////////////////////////////////////////
-//
-//  Layouts.
-//
+///////////////////////////////////////////////////////////////////////////////
+// Layouts.
 
 S.layout('1-monitor', {
   'Google Chrome': {
@@ -206,6 +200,37 @@ S.layout('3-monitor', {
   },
 });
 
+S.layout('3-monitor-alt', {
+  'iTerm2': {
+    operations: [S.op('push', {
+      screen: dell30r.screen,
+      direction: 'top',
+      style: 'center'}
+    )],
+  },
+  'Google Chrome': {
+    operations: [function(w) {
+      if (w.main()) {
+        w.doop(dell30c.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
+      } else {
+        w.doop(dell30c.grid(2, 2).snapto(xy(1, 0), xy(1, 2)));
+      }
+    }],
+    'ignore-fail': true,
+    'repeat': true,
+  },
+  'Microsoft Outlook': {
+    operations: [mbp15.full()],
+  },
+  'Textual IRC Client': {
+    operations: [mbp15.full()],
+  },
+});
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Operations.
+
 function layout() {
   var count = S.screenCount();
   if (count <= 3) {
@@ -213,17 +238,31 @@ function layout() {
   }
 }
 
+var ntogs = (function() {
+  var i = 0;
+  return function() { return i++; };
+})();
+
+function toggle() {
+  if (S.screenCount() != 3) { return; }
+
+  if (ntogs() % 2 == 0) {
+    S.op('layout', {name: '3-monitor-alt'}).run();
+  } else {
+    S.op('layout', {name: '3-monitor'}).run();
+  }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Defaults and bindings.
+
 S.def([mbp15.screen], '1-monitor');
 S.def([mbp15.screen, dell30.screen], '2-monitor');
 S.def([mbp15.screen, dell30.screen, dell30.screen], '3-monitor');
 
-
-//////////////////////////////////////////
-//
-//  Bindings.
-//
-
 S.bindAll({
-  'space:ctrl':   layout,
-  'return:ctrl':  S.op('relaunch'),
+  'space:ctrl':       layout,
+  'space:ctrl,shift': toggle,
+  'return:ctrl':      S.op('relaunch'),
 });
