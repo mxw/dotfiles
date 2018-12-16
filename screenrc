@@ -18,3 +18,6 @@ hardstatus alwayslastline "%{= KC}[%H]   %{g}%?%-Lw%?%{M}(%{b}%n* %f%t%?(%u)%?%{
 
 # do colors right
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# import local settings
+source $HOME/.screenrc.local
