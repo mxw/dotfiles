@@ -13,4 +13,6 @@ augroup filetypedetect
 
   au! BufRead,BufNewFile profile  setfiletype sh
   au! BufRead,BufNewFile *.gdb  setfiletype gdb
+  au! BufRead,BufNewFile screenrc.*  setfiletype screen
+  au! BufRead,BufNewFile .screenrc.* setfiletype screen
 augroup END
