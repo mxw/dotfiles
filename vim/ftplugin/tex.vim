@@ -25,7 +25,6 @@ let maplocalleader=','
 
 " PDF viewer.
 let g:LatexBox_viewer=s:tex_viewer
-echo s:tex_viewer
 
 """"""""""""""""""""""""""""""""""""""""""
 " Vim-LaTeX

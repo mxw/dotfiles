@@ -59,6 +59,9 @@ fi
 
 # Update PATH.
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+if [ "$OS_NAME" == 'darwin' ] && [ -d "/Library/TeX/texbin" ]; then
+  PATH="/Library/TeX/texbin:$PATH"
+fi
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
