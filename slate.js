@@ -123,8 +123,9 @@ _.extend(Monitor.prototype, {
   },
 });
 
-var mbp15  = new Monitor('1440x900');   // all layouts
-var dell30 = new Monitor('2560x1600');  // 2-screen only
+var mbp15   = new Monitor('1440x900');   // all layouts
+var mbp19   = new Monitor('2880x1800');  // all layouts
+var dell30  = new Monitor('2560x1600');  // 2-screen only
 var dell30c = new Monitor(1); // 3-screen only
 var dell30r = new Monitor(2); // 3-screen only
 
@@ -260,6 +261,10 @@ function toggle() {
 S.def([mbp15.screen], '1-monitor');
 S.def([mbp15.screen, dell30.screen], '2-monitor');
 S.def([mbp15.screen, dell30.screen, dell30.screen], '3-monitor');
+
+S.def([mbp19.screen], '1-monitor');
+S.def([mbp19.screen, dell30.screen], '2-monitor');
+S.def([mbp19.screen, dell30.screen, dell30.screen], '3-monitor');
 
 S.bindAll({
   'space:ctrl':       layout,
