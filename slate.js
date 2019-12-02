@@ -133,6 +133,24 @@ var dell30r = new Monitor(2); // 3-screen only
 ///////////////////////////////////////////////////////////////////////////////
 // Layouts.
 
+function make_chrome_layout(monitor) {
+  return function() {
+    let is_left = false;
+    return function(w) {
+      if (w.main()) {
+        w.doop(monitor.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
+        return;
+      }
+      if (is_left) {
+        w.doop(monitor.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
+      } else {
+        w.doop(monitor.grid(2, 2).snapto(xy(1, 0), xy(1, 2)));
+      }
+      is_left = !is_left;
+    };
+  }();
+}
+
 S.layout('1-monitor', {
   'Google Chrome': {
     operations: [mbp15.full()],
@@ -156,13 +174,7 @@ S.layout('2-monitor', {
     )],
   },
   'Google Chrome': {
-    operations: [function(w) {
-      if (w.main()) {
-        w.doop(dell30.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
-      } else {
-        w.doop(dell30.grid(2, 2).snapto(xy(1, 0), xy(1, 2)));
-      }
-    }],
+    operations: [make_chrome_layout(dell30)],
     'ignore-fail': true,
     'repeat': true,
   },
@@ -183,13 +195,7 @@ S.layout('3-monitor', {
     )],
   },
   'Google Chrome': {
-    operations: [function(w) {
-      if (w.main()) {
-        w.doop(dell30r.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
-      } else {
-        w.doop(dell30r.grid(2, 2).snapto(xy(1, 0), xy(1, 2)));
-      }
-    }],
+    operations: [make_chrome_layout(dell30r)],
     'ignore-fail': true,
     'repeat': true,
   },
@@ -210,13 +216,7 @@ S.layout('3-monitor-alt', {
     )],
   },
   'Google Chrome': {
-    operations: [function(w) {
-      if (w.main()) {
-        w.doop(dell30c.grid(2, 2).snapto(xy(0, 0), xy(1, 2)));
-      } else {
-        w.doop(dell30c.grid(2, 2).snapto(xy(1, 0), xy(1, 2)));
-      }
-    }],
+    operations: [make_chrome_layout(dell30c)],
     'ignore-fail': true,
     'repeat': true,
   },
