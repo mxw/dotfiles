@@ -1,0 +1,34 @@
+server {
+  server_name zpy.mxawng.com
+              ;
+
+  location / {
+    proxy_pass http://localhost:8080;
+  }
+
+  location /zpy/ {
+    proxy_pass http://localhost:8080;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "Upgrade";
+    proxy_set_header Host $host;
+  }
+
+  listen 443 ssl; # managed by Certbot
+  ssl_certificate /etc/letsencrypt/live/zpy.mxawng.com/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/zpy.mxawng.com/privkey.pem; # managed by Certbot
+  include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+  if ($host = zpy.mxawng.com) {
+    return 301 https://$host$request_uri;
+  } # managed by Certbot
+
+  listen 80;
+  server_name zpy.mxawng.com
+              ;
+
+  return 404; # managed by Certbot
+}

@@ -8,7 +8,13 @@ server {
   access_log /var/tmp/realcty_access_log;
   error_log /var/tmp/realcty_error_log;
 
-  include hhvm.conf;
+  # include hhvm.conf;
+
+  location ~ \.php$ {
+    include fastcgi_params;
+    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $request_filename;
+  }
 
   index index.php;
   root /home/mxw/realcty/mediawiki;
@@ -19,4 +25,15 @@ server {
   }
 
   include mediawiki.conf;
+
+  listen 443 ssl; # managed by Certbot
+  ssl_certificate /etc/letsencrypt/live/realcty.mxawng.com/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/realcty.mxawng.com/privkey.pem; # managed by Certbot
+  include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+  # Redirect non-https traffic to https.
+  if ($scheme != "https") {
+    return 301 https://$host$request_uri;
+  }
 }
