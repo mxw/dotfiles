@@ -113,6 +113,7 @@ install_dot "profile"
 install_dot "profile.d/10-completion"
 install_dot "profile.d/20-color"
 install_dot "profile.d/30-aliases"
+install_dot "profile.d/40-environment"
 install_dot "bashrc"
 
 mkdir -p "$HOME/.hgrc.d"
