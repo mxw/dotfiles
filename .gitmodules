@@ -49,6 +49,9 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/nginx"]
+	path = vim/bundle/nginx
+	url = https://github.com/chr4/nginx.vim
 [submodule "vim/bundle/prolog"]
 	path = vim/bundle/prolog
 	url = git://github.com/mxw/vim-prolog.git
