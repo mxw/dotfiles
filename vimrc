@@ -183,6 +183,9 @@ nnoremap <leader>m  :make<CR>
 nnoremap <leader>l  <C-l>
 nnoremap <leader>v  <C-w>v
 
+" Refresh syntax highlighting.
+nnoremap <leader><leader>  :syntax sync fromstart<CR>
+
 " Toggle spellchecking and paste.
 nnoremap <leader>s  :setl spell!<CR>:setl spell?<CR>
 nnoremap <leader>p  :setl paste!<CR>:setl paste?<CR>
