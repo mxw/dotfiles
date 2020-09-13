@@ -76,6 +76,8 @@
   date = local
 [merge]
   stat = true
+[pull]
+  rebase = true
 [push]
   default = upstream
 [rerere]
