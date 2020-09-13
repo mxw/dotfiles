@@ -106,6 +106,7 @@ install_dot "inputrc"
 install_dot "screenrc"
 install_dot "vim"
 install_dot "vimrc"
+install_dot "xvimrc"
 is_mac && install_dot "slate.js"
 
 mkdir -p "$HOME/.profile.d"

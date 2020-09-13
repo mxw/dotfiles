@@ -1,0 +1,130 @@
+" .xvimrc file
+" Maintainer:   Max Wang <mxawng@gmail.com>
+" URL:          https://github.com/mxw/dotfiles
+
+" vim >> vi.
+set nocompatible
+
+
+""""""""""""""""""""""""""""""""""""""""""
+" General
+""""""""""""""""""""""""""""""""""""""""""
+
+" Display.
+set nonumber          " hide line numbers
+set showcmd           " show normal mode commands as they are entered
+set showmode          " show editing mode in status line
+set showmatch         " flash matching delimiters
+
+set nolist            " no metacharacters
+set listchars=tab:>-  " but show tabs if we turn it on
+
+" Search.
+set nohlsearch        " don't persist search highlighting
+set incsearch         " search with a typeahead
+set magic             " use (some) regexp special characters
+set ignorecase        " ignore case...
+set smartcase         " ...iff all characters are lower case
+set infercase         " case-sensitive completion
+
+" Scrolling.
+set wrap              " wrap overlong lines
+set scrolloff=0       " don't scroll unless necessary
+set scrolljump=1      " scroll one line at a time
+
+" Turn things off.
+set nofoldenable      " no folding
+set mouse=            " no mouse
+set noerrorbells      " no error bells
+set vb t_vb=          " no visual bells
+
+" Backspace over everything.
+set backspace=indent,eol,start
+
+" Get rid of security holes.
+set nomodeline
+set modelines=0
+
+" Tab and indent.
+set autoindent        " carry indent over to new lines
+set shiftwidth=2      " two spaces per indent
+set tabstop=2         " number of spaces per tab when viewing
+set softtabstop=2     " number of spaces per tab when inserting
+set expandtab         " sub spaces for tabs
+set smarttab          " make tab key obey indent rules specified above
+set formatoptions+=ro " autoindent on `o` and <CR>
+
+" History and undo caches.
+set history=50        " not too much history
+set undolevels=1000   " lots of undo!
+
+
+""""""""""""""""""""""""""""""""""""""""""
+" Buffers and windows
+""""""""""""""""""""""""""""""""""""""""""
+
+" Settings.
+set hidden            " keep hidden buffers around
+set autoread          " automatically re-read modified files
+set splitright        " hsplit to the right
+set splitbelow        " vsplit to the left
+set laststatus=2      " always show a status line
+
+" Window navigation.
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
+
+" Buffer navigation.
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprev<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""
+" Maps
+""""""""""""""""""""""""""""""""""""""""""
+
+" Switch modes more easily.
+nnoremap ; :
+inoremap jj <Esc>
+inoremap kjk <Esc>
+
+" Make Y behave more like other operators.
+nnoremap Y y$
+
+" Make Q formatting; replace Ex mode with ,q.
+noremap  Q gq
+nnoremap ,q Q
+
+" Replace <C-a> to accommodate screen escape character.
+inoremap <C-z> <C-a>
+nnoremap ,a <C-a>
+nnoremap ,x <C-x>
+
+" Jump to matching delimiters more easily.
+nnoremap ,<Tab> %
+vnoremap ,<Tab> %
+
+" Other useful leader maps.
+nnoremap ,m  :make<CR>
+nnoremap ,r  :run<CR>
+nnoremap ,l  <C-l>
+nnoremap ,v  <C-w>v
+
+" Toggle spellchecking and paste.
+nnoremap ,s  :setl spell!<CR>:setl spell?<CR>
+nnoremap ,p  :setl paste!<CR>:setl paste?<CR>
+nnoremap ,t  :setl list!<CR>:setl list?<CR>
+
+" Remove trailing whitespace.
+nnoremap <silent> ,w :%s/\s\+$//<CR>:let @/=''<CR>''
+
+" Make <C-Right> and <C-Left> behave as in emacs.
+noremap  <ESC>[1;5C <C-Right>
+noremap  <ESC>[1;5D <C-Left>
+noremap! <ESC>[1;5C <C-Right>
+noremap! <ESC>[1;5D <C-Left>
+
+" Fewer fat fingers.
+noremap ZZ <C-z>
