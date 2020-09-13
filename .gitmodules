@@ -43,6 +43,9 @@
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
 	url = git://github.com/tpope/vim-liquid.git
+[submodule "vim/bundle/lsp"]
+	path = vim/bundle/lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git
 [submodule "vim/bundle/mercenary"]
 	path = vim/bundle/mercenary
 	url = git://github.com/jlfwong/vim-mercenary.git
