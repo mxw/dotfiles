@@ -266,8 +266,6 @@ call Cabbrev('vstag', 'Vstag')
 " LSP
 """"""""""""""""""""""""""""""""""""""""""
 
-let g:lsp_log_file = expand('~/vim-lsp.log')
-
 if executable('xcrun')
   au User lsp_setup call lsp#register_server({
     \ 'name': 'sourcekit-lsp',
