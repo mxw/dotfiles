@@ -3,7 +3,8 @@
 " Maintainer:   Max Wang <mxawng@gmail.com>
 " URL:          https://github.com/mxw/dotfiles
 
-setl number
+au! FileType swift setl number
+au! BufEnter *.swift setl number
 
 let s:swift_build_args = join([
   \ '-Xswiftc',
