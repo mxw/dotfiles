@@ -266,6 +266,14 @@ call Cabbrev('vstag', 'Vstag')
 " LSP
 """"""""""""""""""""""""""""""""""""""""""
 
+function! s:find_nearest_parent_dir(path, filename) abort
+  let l:candidates = map(a:filename, {idx ->
+    \ lsp#utils#find_nearest_parent_file_directory(a:path, a:filename[idx])
+    \ })
+  let l:sorted = sort(l:candidates, {l, r -> strlen(r) - strlen(l)})
+  return l:sorted[0]
+endfunction
+
 if executable('xcrun')
   au User lsp_setup call lsp#register_server({
     \ 'name': 'sourcekit-lsp',
@@ -286,9 +294,9 @@ if executable('xcrun')
         \], '')
       \ ]},
     \ 'root_uri': {server_info -> lsp#utils#path_to_uri(
-    \   lsp#utils#find_nearest_parent_file_directory(
+    \   s:find_nearest_parent_dir(
     \     lsp#utils#get_buffer_path(),
-    \     ['Package.json', '.git/']
+    \     ['Package.swift', '.git/']
     \   )
     \ )},
     \ 'allowlist': ['swift'],
