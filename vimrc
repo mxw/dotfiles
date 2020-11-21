@@ -279,7 +279,11 @@ if executable('xcrun')
       \ '-Xswiftc',
       \ '-target',
       \ '-Xswiftc',
-      \ 'x86_64-apple-ios13.7-simulator'
+      \ join([
+        \ 'x86_64-apple-ios',
+        \ trim(system('xcrun --sdk iphonesimulator --show-sdk-version')),
+        \ '-simulator',
+        \], '')
       \ ]},
     \ 'root_uri': {server_info -> lsp#utils#path_to_uri(
     \   lsp#utils#find_nearest_parent_file_directory(
@@ -293,15 +297,15 @@ endif
 
 function! s:on_lsp_buffer_enabled() abort
   setl omnifunc=lsp#complete
-  setl signcolumn=yes
+  setl signcolumn=number
   if exists('+tagfunc') | setl tagfunc=lsp#tagfunc | endif
   nmap <buffer> gd <plug>(lsp-definition)
   nmap <buffer> gr <plug>(lsp-references)
   nmap <buffer> gi <plug>(lsp-implementation)
   nmap <buffer> gt <plug>(lsp-type-definition)
   nmap <buffer> <leader>rn <plug>(lsp-rename)
-  nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-  nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+  nmap <buffer> g[ <Plug>(lsp-previous-diagnostic)
+  nmap <buffer> g] <Plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
 
   " refer to doc to add more commands
@@ -311,6 +315,9 @@ augroup lsp_install
   au!
   au User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_delay = 100
 
 
 """"""""""""""""""""""""""""""""""""""""""

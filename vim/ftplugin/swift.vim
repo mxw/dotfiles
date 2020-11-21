@@ -14,7 +14,11 @@ let s:swift_build_args = join([
   \ '-Xswiftc',
   \ '-target',
   \ '-Xswiftc',
-  \ 'x86_64-apple-ios13.7-simulator'
+  \ join([
+    \ 'x86_64-apple-ios',
+    \ trim(system('xcrun --sdk iphonesimulator --show-sdk-version')),
+    \ '-simulator',
+    \], '')
   \ ])
 
 if executable('xcrun')
