@@ -10,7 +10,7 @@ setl shiftwidth=2
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
-    let s:tex_viewer='open'
+    let s:tex_viewer='/usr/bin/open'
   else
     let s:tex_viewer='xdg-open'
   endif
