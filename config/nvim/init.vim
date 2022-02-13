@@ -14,4 +14,6 @@ runtime vim-plug/plug.vim
 
 call plug#begin()
 
+Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
+
 call plug#end()
