@@ -174,10 +174,16 @@ S.layout('2-monitor', {
     )],
   },
   'Google Chrome': {
+    operations: [dell30.full()],
+    repeat: true,
+  },
+  /*
+  'Google Chrome': {
     operations: [make_chrome_layout(dell30)],
     'ignore-fail': true,
     'repeat': true,
   },
+  */
   'Microsoft Outlook': {
     operations: [mbp15.full()],
   },
