@@ -122,6 +122,9 @@ install_dot "hgrc.d/git-style.hg"
 install_dot "hgrc.d/hgprompt"
 install_dot "hgrc.d/whatchanged.hg"
 
+mkdir -p "$HOME/.config/nvim"
+install_dot "config/nvim/init.vim"
+
 # The SSH folder most likely already exists, and in any event we don't want to
 # manage it ourselves.  If we are creating it for the first time, however, we
 # should lock down the permissions.
