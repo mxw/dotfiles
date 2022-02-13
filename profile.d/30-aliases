@@ -18,3 +18,6 @@ alias objclean='rm -rf *.o *.pyc __pycache__'
 
 # SSH/screen shortcuts.
 alias skym='ssh skym -t "screen -UxRR"'
+
+# Arcanist.
+alias adv='arc diff --verbatim HEAD^'
