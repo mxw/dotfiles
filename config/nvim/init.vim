@@ -6,8 +6,9 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
+
 """"""""""""""""""""""""""""""""""""""""""
-" Plugins
+" plugins
 """"""""""""""""""""""""""""""""""""""""""
 
 runtime vim-plug/plug.vim
@@ -17,3 +18,10 @@ call plug#begin()
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
 call plug#end()
+
+
+""""""""""""""""""""""""""""""""""""""""""
+" plugin config
+""""""""""""""""""""""""""""""""""""""""""
+
+let g:scnvim_no_mappings = 1

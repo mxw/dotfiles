@@ -4,8 +4,6 @@
 " URL:          https://github.com/mxw/dotfiles
 
 " Define mappings closer to SCIDE.
-let g:scnvim_no_mappings = 1
-
 let maplocalleader=','
 
 nnoremap <LocalLeader>o :SCNvimStart<CR>
