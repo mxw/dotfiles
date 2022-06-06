@@ -177,6 +177,12 @@ S.layout('2-monitor', {
     operations: [dell30.full()],
     repeat: true,
   },
+  'Messenger': {
+    operations: [dell30.grid(2, 2).snapto(xy(0, 0), xy(1, 2))],
+  },
+  'Discord': {
+    operations: [dell30.grid(2, 2).snapto(xy(1, 0), xy(1, 2))],
+  },
   /*
   'Google Chrome': {
     operations: [make_chrome_layout(dell30)],
@@ -238,6 +244,9 @@ S.layout('3-monitor-alt', {
 ///////////////////////////////////////////////////////////////////////////////
 // Operations.
 
+/*
+ * Reset to default layout.
+ */
 function layout() {
   var count = S.screenCount();
   if (count <= 3) {
@@ -250,6 +259,9 @@ var ntogs = (function() {
   return function() { return i++; };
 })();
 
+/*
+ * Swap big monitors when there are two.
+ */
 function toggle() {
   if (S.screenCount() != 3) { return; }
 
@@ -258,6 +270,32 @@ function toggle() {
   } else {
     S.op('layout', {name: '3-monitor'}).run();
   }
+}
+
+/*
+ * Context-aware push.
+ */
+function pushy(dir) {
+  return function() {
+    if (dir != 'left' && dir != 'right') { return; }
+
+    const scr = S.screen().rect();
+    const win = S.window().rect();
+
+    const pushed =
+      (dir === 'left'  && scr.x === win.x) ||
+      (dir === 'right' && scr.x !== win.x);
+
+    // dumb logic that lets us cycle 1/2 -> 1/3 -> 2/3 -> 1/2
+    const ratio = Math.round(scr.width / (win.width + 1));
+    const div = pushed ? (ratio % 3) + 1 : 2;
+
+    S.op('push', {
+      screen: S.screen(),
+      direction: dir,
+      style: "bar-resize:screenSizeX/" + (div > 1 ? div : '3*2'),
+    }).run();
+  };
 }
 
 
@@ -276,4 +314,13 @@ S.bindAll({
   'space:ctrl':       layout,
   'space:ctrl,shift': toggle,
   'return:ctrl':      S.op('relaunch'),
+
+  'left:ctrl,shift,alt':  pushy('left'),
+  'right:ctrl,shift,alt': pushy('right'),
+  'down:ctrl,shift,alt':    S.op('move', {
+    x: 'screenOriginX',
+    y: 'screenOriginY',
+    width: 'screenSizeX',
+    height: 'screenSizeY',
+  }),
 });
