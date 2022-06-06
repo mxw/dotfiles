@@ -26,11 +26,11 @@ function xy(x, y) {
 /**
  * Slate, y u only have strings?
  */
-var scr = {
+const scr = {
   pos:  xy('screenOriginX', 'screenOriginY'),
   size: xy('screenSizeX', 'screenSizeY'),
 };
-var win = {
+const win = {
   pos:  xy('windowTopLeftX', 'windowTopLeftY'),
   size: xy('windowSizeX', 'windowSizeY'),
 };
@@ -72,7 +72,7 @@ _.extend(Grid.prototype, {
     // Default to noresize.
     span = span || xy(this.x, this.y);
 
-    var screen = this.screen;
+    const screen = this.screen;
 
     return S.op('move', _.extend(
       {screen: screen},
@@ -85,8 +85,8 @@ _.extend(Grid.prototype, {
    * Returns an operation for centering a window on a cell's vertex.
    */
   center: function(cell) {
-    var screen = this.screen;
-    var pos = this.pos(cell.x, cell.y);
+    const screen = this.screen;
+    const pos = this.pos(cell.x, cell.y);
 
     return S.op('move', {
       screen: screen,
@@ -108,7 +108,7 @@ function Monitor(screen) {
 }
 _.extend(Monitor.prototype, {
   grid: function(x, y) {
-    var dims = x + 'x' + y;
+    const dims = x + 'x' + y;
     this._grids[dims] = this._grids[dims] || new Grid(this.screen, xy(x, y));
 
     return this._grids[dims];
@@ -123,11 +123,11 @@ _.extend(Monitor.prototype, {
   },
 });
 
-var mbp15   = new Monitor('1440x900');   // all layouts
-var mbp19   = new Monitor('2880x1800');  // all layouts
-var dell30  = new Monitor('2560x1600');  // 2-screen only
-var dell30c = new Monitor(1); // 3-screen only
-var dell30r = new Monitor(2); // 3-screen only
+const mbp15   = new Monitor('1440x900');   // all layouts
+const mbp19   = new Monitor('2880x1800');  // all layouts
+const dell30  = new Monitor('2560x1600');  // 2-screen only
+const dell30c = new Monitor(1); // 3-screen only
+const dell30r = new Monitor(2); // 3-screen only
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -248,14 +248,14 @@ S.layout('3-monitor-alt', {
  * Reset to default layout.
  */
 function layout() {
-  var count = S.screenCount();
+  const count = S.screenCount();
   if (count <= 3) {
     S.op('layout', {name: count + '-monitor'}).run();
   }
 }
 
 var ntogs = (function() {
-  var i = 0;
+  let i = 0;
   return function() { return i++; };
 })();
 
