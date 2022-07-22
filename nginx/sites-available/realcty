@@ -2,7 +2,6 @@ server {
   listen 80;
   server_name realcty.org
               www.realcty.org
-              realcty.mxawng.com
               ;
 
   access_log /var/tmp/realcty_access_log;
