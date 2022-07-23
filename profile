@@ -31,7 +31,7 @@ fi
 
 OSNAME=${OSTYPE//[0-9.]/}
 
-if [ "$OS_NAME" == 'darwin' ] && command -v brew >/dev/null 2>&1; then
+if [ "$OSNAME" == 'darwin' ] && command -v brew >/dev/null 2>&1; then
   LOCAL_DIR=$(brew --prefix)
 else
   LOCAL_DIR='/usr/local'
