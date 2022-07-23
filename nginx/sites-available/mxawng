@@ -1,9 +1,18 @@
 server {
   listen 80;
+  listen 443 ssl;
   server_name mxawng.com
               www.mxawng.com
               ;
 
   index index.html;
   root /home/mxw/www;
+
+  error_page 404 /404.html;
+
+  # managed by certbot
+  ssl_certificate /etc/letsencrypt/live/mxawng.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/mxawng.com/privkey.pem;
+  include /etc/letsencrypt/options-ssl-nginx.conf;
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 }
