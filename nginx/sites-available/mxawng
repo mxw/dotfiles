@@ -1,5 +1,4 @@
 server {
-  listen 80;
   listen 443 ssl;
   server_name mxawng.com
               www.mxawng.com
@@ -18,4 +17,19 @@ server {
   ssl_certificate_key /etc/letsencrypt/live/mxawng.com/privkey.pem;
   include /etc/letsencrypt/options-ssl-nginx.conf;
   ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+server {
+  if ($host = mxawng.com) {
+    return 301 https://$host$request_uri;
+  }
+  if ($host = www.mxawng.com) {
+    return 301 https://$host$request_uri;
+  }
+
+  listen 80;
+  server_name mxawng.com
+              www.mxawng.com
+              ;
+  return 404;
 }
