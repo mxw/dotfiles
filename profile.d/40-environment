@@ -7,7 +7,7 @@ if [ $OSNAME == 'darwin' ]; then
 
   export GEM_HOME="$HOME/.gems"
   PATH="$HOME/.gems/bin:$PATH"
-elif [ $OSNAME == 'linux' ]; then
+elif [[ $OSNAME == linux* ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
