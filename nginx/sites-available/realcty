@@ -48,3 +48,27 @@ server {
               ;
   return 404;
 }
+
+#--------------------------------------------------------------------
+
+server {
+  listen 443 ssl;
+  server_name eliza.realcty.org;
+
+  index index.html;
+  root /home/mxw/realcty/eliza;
+
+  # managed by certbot
+  ssl_certificate /etc/letsencrypt/live/eliza.realcty.org/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/eliza.realcty.org/privkey.pem;
+}
+
+server {
+  if ($host = eliza.realcty.org) {
+    return 301 https://$host$request_uri;
+  }
+  listen 80;
+  server_name eliza.realcty.org;
+
+  return 404;
+}
