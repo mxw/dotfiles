@@ -266,43 +266,6 @@ call Cabbrev('vstag', 'Vstag')
 " LSP
 """"""""""""""""""""""""""""""""""""""""""
 
-function! s:find_nearest_parent_dir(path, filename) abort
-  let l:candidates = map(a:filename, {idx ->
-    \ lsp#utils#find_nearest_parent_file_directory(a:path, a:filename[idx])
-    \ })
-  let l:sorted = sort(l:candidates, {l, r -> strlen(r) - strlen(l)})
-  return l:sorted[0]
-endfunction
-
-if executable('xcrun')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'sourcekit-lsp',
-    \ 'cmd': {server_info -> [
-      \ 'xcrun',
-      \ 'sourcekit-lsp',
-      \ '-Xswiftc',
-      \ '-sdk',
-      \ '-Xswiftc',
-      \ trim(system('xcrun --sdk iphonesimulator --show-sdk-path')),
-      \ '-Xswiftc',
-      \ '-target',
-      \ '-Xswiftc',
-      \ join([
-        \ 'x86_64-apple-ios',
-        \ trim(system('xcrun --sdk iphonesimulator --show-sdk-version')),
-        \ '-simulator',
-        \], '')
-      \ ]},
-    \ 'root_uri': {server_info -> lsp#utils#path_to_uri(
-    \   s:find_nearest_parent_dir(
-    \     lsp#utils#get_buffer_path(),
-    \     ['Package.swift', '.git/']
-    \   )
-    \ )},
-    \ 'allowlist': ['swift'],
-    \ })
-endif
-
 function! s:on_lsp_buffer_enabled() abort
   setl omnifunc=lsp#complete
   setl signcolumn=number
