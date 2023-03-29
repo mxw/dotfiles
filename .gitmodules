@@ -28,6 +28,9 @@
 [submodule "vim/bundle/haml-sass"]
 	path = vim/bundle/haml-sass
 	url = git://github.com/tpope/vim-haml.git
+[submodule "vim/bundle/haskell-indent"]
+	path = vim/bundle/haskell-indent
+	url = https://github.com/itchyny/vim-haskell-indent.git
 [submodule "vim/bundle/hg"]
 	path = vim/bundle/hg
 	url = git://github.com/mxw/vim-hg.git
