@@ -1,4 +1,4 @@
-" Vim ftplugin file
+" Vim syntax file
 " Language:     Javascript
 " Maintainer:   Max Wang <mxawng@gmail.com>
 " URL:          https://github.com/mxw/dotfiles

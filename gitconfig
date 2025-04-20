@@ -31,6 +31,7 @@
   stow = stash --keep-index
   sw = show --ignore-space-change
   sup = "!git stash && git pull --rebase && git stash pop"
+  ri = rebase -i
   rmbr = branch -D
   up = pull --rebase
   w = whatchanged --pretty=short

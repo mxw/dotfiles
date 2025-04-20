@@ -32,6 +32,7 @@ fi
 OSNAME=${OSTYPE//[0-9.]/}
 
 if [ "$OSNAME" == 'darwin' ] && command -v brew >/dev/null 2>&1; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
   LOCAL_DIR=$(brew --prefix)
 else
   LOCAL_DIR='/usr/local'
@@ -58,7 +59,6 @@ fi
 #-----------------------------------------
 
 # Update PATH.
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 if [ "$OS_NAME" == 'darwin' ] && [ -d "/Library/TeX/texbin" ]; then
   PATH="/Library/TeX/texbin:$PATH"
 fi
