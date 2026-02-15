@@ -309,14 +309,14 @@ au BufEnter *
   \ endif
 
 " Fugitive - Leader mappings.
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gg :Ggrep<Space>
-nnoremap <leader>gl :Glog<CR><CR><CR>:copen<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gh :Gbrowse<CR>
+nnoremap <leader>ge :Git edit<CR>
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>gd :Git diff<CR>
+nnoremap <leader>gg :Git grep<Space>
+nnoremap <leader>gl :Git log<CR><CR><CR>:copen<CR>
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gh :Git browse<CR>
 
 " Mercenary - Leader mappings.
 nnoremap <leader>hb :HGblame<CR>
