@@ -6,14 +6,15 @@ server {
 
   # include hhvm.conf;
 
-  location ~ \.php$ {
-    include fastcgi_params;
-    fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
-    fastcgi_param SCRIPT_FILENAME $request_filename;
-  }
-
   index index.php;
   root /home/mxw/realcty/mediawiki;
+
+  location ~ ^/(index|load|api|thumb|opensearch_desc|rest|img_auth)\.php$ {
+    include fastcgi_params;
+    fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $request_filename;
+  }
+  location ~ \.php$ { internal; }
 
   # accept /mw/ prefix from old external links
   location /mw/ {
