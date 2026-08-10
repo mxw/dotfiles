@@ -94,10 +94,13 @@ set formatoptions+=ro " autoindent on `o` and <CR>
 
 " Highlight trailing whitespace.
 hi ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * hi ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
+augroup TrailingWhitespace
+  autocmd!
+  au ColorScheme * hi ExtraWhitespace guibg=red
+  au BufEnter * match ExtraWhitespace /\s\+$/
+  au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  au InsertLeave * match ExtraWhiteSpace /\s\+$/
+augroup END
 
 
 """"""""""""""""""""""""""""""""""""""""""
@@ -295,8 +298,10 @@ let g:lsp_diagnostics_echo_delay = 100
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""
 
-" Airline - Use powerline glyphs.
+" Airline - Use powerline glyphs & solarized colorscheme.
 let g:airline_powerline_fonts=1
+let g:airline_theme='solarized'
+let g:airline_solarized_bg = 'dark'
 
 " NERDTree - Toggle buffer.
 nnoremap <leader><Space> :NERDTreeToggle<CR><C-w>=
