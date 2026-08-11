@@ -43,9 +43,6 @@
 [submodule "vim/bundle/jsx"]
 	path = vim/bundle/jsx
 	url = https://github.com/mxw/vim-jsx.git
-[submodule "vim/bundle/latex"]
-	path = vim/bundle/latex
-	url = https://github.com/mxw/vim-latex.git
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
 	url = https://github.com/tpope/vim-liquid.git
@@ -73,6 +70,9 @@
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/vimtex"]
+	path = vim/bundle/vimtex
+	url = https://github.com/lervag/vimtex
 [submodule "vim/bundle/xhp"]
 	path = vim/bundle/xhp
 	url = https://github.com/mxw/vim-xhp.git
